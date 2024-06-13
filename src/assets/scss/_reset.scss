@@ -1,0 +1,13 @@
+h2 {
+	margin: 0;
+}
+
+p {
+	margin: 0;
+}
+
+:where(:any-link) {
+	color: inherit;
+	cursor: pointer;
+	text-decoration: none;
+}

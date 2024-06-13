@@ -1,0 +1,67 @@
+@use "reset";
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap");
+
+body {
+	margin: 0;
+	background-color: $c-fff;
+	color: $c-404;
+	font-family: "Poppins", "Noto Sans Tc", Helvetica, Arial, "微軟正黑體",
+		Heiti TC, "メイリオ", sans-serif;
+}
+
+#app {
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+@keyframes rotate {
+	from {
+		transform: rotate(0);
+	}
+	to {
+		transform: rotate(1turn);
+	}
+}
+
+@keyframes goUp {
+	from {
+		transform: translateY(0);
+	}
+	to {
+		transform: translateY(-4px);
+	}
+}
+
+@keyframes goDown {
+	from {
+		transform: translateY(10px);
+	}
+	to {
+		transform: translateY(0);
+	}
+}
+
+@keyframes bigger {
+	to {
+		transform: scale(1.05);
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes strechWidth {
+	from {
+		width: 0;
+	}
+	to {
+		width: 100%;
+	}
+}
