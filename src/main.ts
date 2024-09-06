@@ -7,6 +7,9 @@ import GlobalAnchor from "./components/global/GlobalAnchor.vue";
 import GlobalNavigation from "./components/global/GlobalNavigation/index.vue";
 import GlobalCopyright from "./components/global/GlobalCopyright.vue";
 import GlobalFollow from "./components/global/GlobalFollow.vue";
+import { register } from "swiper/element/bundle";
+
+register();
 
 async function enableMocking() {
 	if (import.meta.env.MODE === "production") return;

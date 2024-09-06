@@ -1,4 +1,5 @@
 import HomeHeader from "@/components/home/HomeHeader.vue";
+import HomeView from "@/views/home/HomeView.vue";
 import type { RouteRecordRaw } from "vue-router";
 
 export const routes: RouteRecordRaw[] = [
@@ -7,6 +8,7 @@ export const routes: RouteRecordRaw[] = [
 		name: "home",
 		components: {
 			Header: HomeHeader,
+			default: HomeView,
 		},
 	},
 	{
