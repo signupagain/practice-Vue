@@ -1,0 +1,45 @@
+[
+	{
+		"id": "dGK9p",
+		"value": "關於我們",
+		"name": "who",
+		"children": [
+			{ "id": "PJQKC", "value": "公司簡介", "name": "who" },
+			{ "id": "RUEnX", "value": "掌握生產技術", "name": "tech" },
+			{ "id": "DmENS", "value": "品質政策", "name": "policy" },
+			{
+				"id": "pSS0U",
+				"value": "專業檢具開發",
+				"name": "tools"
+			}
+		]
+	},
+	{
+		"id": "bzFcD",
+		"value": "產品介紹",
+		"name": "/product/all",
+		"children": [
+			{
+				"id": "S5Fo7",
+				"value": "客製化產品",
+				"name": "/product/customization"
+			},
+			{ "id": "OHQdn", "value": "規格品", "name": "regular" },
+			{ "id": "GcEZm", "value": "專業檢具", "name": "inspection-tools" }
+		]
+	},
+	{
+		"id": "JZNex",
+		"value": "產業知識",
+		"name": "/knowledge",
+		"children": []
+	},
+	{ "id": "0VJy-", "value": "檔案下載", "name": "/download", "children": [] },
+	{ "id": "ik7fT", "value": "最新消息", "name": "/latest", "children": [] },
+	{
+		"id": "lQ4vs",
+		"value": "聯絡我們",
+		"name": "/contact-us",
+		"children": []
+	}
+]

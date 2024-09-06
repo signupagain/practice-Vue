@@ -17,7 +17,67 @@ export const routes: RouteRecordRaw[] = [
 				name: "who",
 				components: {},
 			},
+			{
+				path: "technology",
+				name: "tech",
+				components: {},
+			},
+			{
+				path: "policy",
+				name: "policy",
+				components: {},
+			},
+			{
+				path: "inspection-tools",
+				name: "tools",
+				components: {},
+			},
 		],
+	},
+	{
+		path: "/product",
+		children: [
+			{
+				path: "all",
+				name: "all",
+				components: {},
+			},
+			{
+				path: "customization",
+				name: "custom",
+				components: {},
+			},
+			{
+				path: "regular",
+				name: "regular",
+				components: {},
+			},
+			{
+				path: "inspection-tools",
+				name: "tools",
+				components: {},
+			},
+		],
+	},
+	{
+		path: "/knowledge",
+		name: "know",
+		children: [],
+	},
+	{
+		path: "/download",
+		name: "download",
+		children: [],
+	},
+	{
+		path: "/latest",
+		name: "latest",
+		children: [],
+	},
+	{
+		path: "/contact-us",
+		name: "contact",
+		children: [],
 	},
 	{
 		path: "/:exclude*",

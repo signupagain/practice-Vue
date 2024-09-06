@@ -1,9 +1,17 @@
 <template>
 	<div class="jy-nl" ref="curBtnWrap">
-		<div class="jy-nl-cur" ref="curBtn">繁中</div>
+		<span class="jy-nl-cur" ref="curBtn">{{ curLang }}</span>
 		<ul class="jy-nl-ul" ref="curBtnControl">
-			<li class="jy-nl-li" v-for="{ value } in lang" :key="value">
-				<a href="javascript:;" class="jy-nl-a" :class="active">
+			<li
+				class="jy-nl-li"
+				v-for="{ title, value, active } in langs"
+				:key="title"
+			>
+				<a
+					href="javascript://尚不提供多種語言;"
+					class="jy-nl-a"
+					:class="{ active }"
+				>
 					<span class="jy-nl-span">{{ value }}</span>
 				</a>
 			</li>
@@ -11,21 +19,26 @@
 	</div>
 </template>
 <script setup lang="ts">
+	import { langDataRequest } from "@/api/requests";
+	import type { LangsData } from "@/api/types/langData";
 	import { useToggleActive } from "@/use/useToggleActive";
-	import { reactive, ref } from "vue";
+	import { computed, ref, reactive } from "vue";
 
-	const lang = reactive({
-		繁中: {
-			value: "繁",
-			active: true,
-		},
-		English: {
-			value: "EN",
-			active: false,
-		},
-	});
+	const defaultLang = ref("繁");
+	const langs = reactive<LangsData>([]);
+	const curLang = computed(
+		() => langs.find((lang) => lang.active === true)?.title
+	);
 
-	const active = ref(true);
+	langDataRequest().then((res) =>
+		langs.push(
+			...res.data.map((obj) =>
+				obj.value === defaultLang.value
+					? Object.assign(obj, { active: true })
+					: obj
+			)
+		)
+	);
 
 	const curBtn = ref(null);
 	const curBtnWrap = ref(null);
@@ -35,17 +48,21 @@
 </script>
 <style lang="scss">
 	.jy-nl {
-		width: 155px;
+		width: fit-content;
 		text-align: center;
+		position: relative;
 
 		&-cur {
 			cursor: pointer;
 			background: $c-4f6;
-			padding: 0 40px;
+			padding: 0 29px;
 			color: $c-fff;
 			font-size: $fs-15;
 			line-height: 80px;
-			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 10px;
 
 			@media (max-width: 1204px) {
 				color: $c-4f6;
@@ -53,16 +70,8 @@
 				background: inherit;
 			}
 
-			&::before,
-			&::after {
-				content: "";
-				position: absolute;
-				inset: 0;
-				margin: auto;
-			}
-
 			&::before {
-				margin-left: 40px;
+				content: "";
 				width: 16px;
 				height: 16px;
 				background: url(@icon/world.png) center / contain;
@@ -73,7 +82,7 @@
 			}
 
 			&::after {
-				margin-right: 43px;
+				content: "";
 				width: 10px;
 				height: 6px;
 				background: url(@icon/arrow.png) center / contain;
@@ -93,7 +102,7 @@
 			transition: 0.5s;
 
 			position: absolute;
-			width: inherit;
+			inset: auto 0;
 			background: $c-fff;
 		}
 

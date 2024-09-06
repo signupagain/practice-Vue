@@ -8,10 +8,21 @@ import GlobalNavigation from "./components/global/GlobalNavigation/index.vue";
 import GlobalCopyright from "./components/global/GlobalCopyright.vue";
 import GlobalFollow from "./components/global/GlobalFollow.vue";
 
-createApp(App)
-	.use(router)
-	.component("GlobalAnchor", GlobalAnchor)
-	.component("GlobalNavigation", GlobalNavigation)
-	.component("GlobalCopyright", GlobalCopyright)
-	.component("GlobalFollow", GlobalFollow)
-	.mount("#app");
+async function enableMocking() {
+	if (import.meta.env.MODE === "production") return;
+
+	const { worker } = await import("./mock");
+	return worker.start({
+		onUnhandledRequest: "bypass",
+	});
+}
+
+enableMocking().then(() =>
+	createApp(App)
+		.use(router)
+		.component("GlobalAnchor", GlobalAnchor)
+		.component("GlobalNavigation", GlobalNavigation)
+		.component("GlobalCopyright", GlobalCopyright)
+		.component("GlobalFollow", GlobalFollow)
+		.mount("#app")
+);

@@ -1,5 +1,5 @@
 <template>
-	<a class="jy-a" href="/" @click="router.push({ name })">
+	<a class="jy-a" href="/" @click.prevent="router.push({ name })">
 		<div class="jy-a-border">
 			<div class="jy-a-text">VIEW MORE</div>
 		</div>
@@ -19,7 +19,6 @@
 </script>
 <style lang="scss">
 	.jy-a {
-		cursor: pointer;
 		display: block;
 		width: 200px;
 		background-color: $c-c6d;

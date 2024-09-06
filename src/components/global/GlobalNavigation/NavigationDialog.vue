@@ -1,8 +1,10 @@
 <template>
 	<div class="jy-nav-d">
 		<ul class="jy-nav-d-ul">
-			<li class="jy-nav-d-li" v-for="value of list">
-				<a href="/" class="jy-nav-d-a">{{ value }}</a>
+			<li class="jy-nav-d-li" v-for="{ value, name } of list">
+				<a href="/" class="jy-nav-d-a" @click.prevent="router.push(name)">{{
+					value
+				}}</a>
 			</li>
 		</ul>
 		<hr class="jy-nav-hr" />
@@ -11,19 +13,23 @@
 	</div>
 </template>
 <script setup lang="ts">
+	import { useRouter } from "vue-router";
+
 	defineProps<{
 		list: {
-			value:string;
-			href:string;
+			value: string;
+			name: string;
 		}[];
 	}>();
+
+	const router = useRouter();
 </script>
 <style lang="scss">
 	.jy-nav {
 		&-d {
 			display: none;
 
-			@media (max-width: 1180px) {
+			@media (max-width: 1204px) {
 				display: block;
 				position: fixed;
 				inset: $mbNavHeight 0 0;

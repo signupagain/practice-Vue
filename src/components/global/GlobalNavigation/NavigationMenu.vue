@@ -1,12 +1,23 @@
 <template>
 	<div class="jy-nav-m" ref="navBtnWrap">
 		<ul class="jy-nav-m-ul">
-			<li class="jy-nav-m-li" v-for="{ id, value, children, href } of menu" :id>
-				<a :href class="jy-nav-m-a">{{ value }}</a>
+			<li class="jy-nav-m-li" v-for="{ id, value, children, name } of menu" :id>
+				<a href="/" class="jy-nav-m-a" @click.prevent="router.push({ name })">{{
+					value
+				}}</a>
 				<div class="jy-nav-m__line"></div>
 				<ul class="jy-nav-m-li-ul" v-if="children.length">
-					<li class="jy-nav-m-li-li" v-for="{ id, value } of children" :id>
-						<a :href class="jy-nav-m-li-a">{{ value }}</a>
+					<li
+						class="jy-nav-m-li-li"
+						v-for="{ id, value, name } of children"
+						:id
+					>
+						<a
+							href="/"
+							class="jy-nav-m-li-a"
+							@click.prevent="router.push({ name })"
+							>{{ value }}</a
+						>
 					</li>
 				</ul>
 			</li>
@@ -20,58 +31,26 @@
 	</div>
 </template>
 <script setup lang="ts">
-	import { reactive, ref, type ComponentPublicInstance } from "vue";
+	import {
+		computed,
+		inject,
+		reactive,
+		ref,
+		type ComponentPublicInstance,
+	} from "vue";
 	import NavigationDialog from "./NavigationDialog.vue";
 	import { useToggleActive } from "@/use/useToggleActive";
-	import { computed } from "@vue/reactivity";
+	import type { AxiosResponse } from "axios";
+	import type { NavigationData, Theme } from "@/api/types/navigationData";
+	import { useRouter } from "vue-router";
 
-	const menu = reactive([
-		{
-			id: "dGK9p",
-			value: "關於我們",
-			href: "/about/who-we-are",
-			children: [
-				{ id: "PJQKC", value: "公司簡介", href: "/about/who-we-are" },
-				{ id: "RUEnX", value: "掌握生產技術", href: "/about/technology" },
-				{ id: "DmENS", value: "品質政策", href: "/about/policy" },
-				{
-					id: "pSS0U",
-					value: "專業檢具開發",
-					href: "/about/inspection-tools",
-				},
-			],
-		},
-		{
-			id: "bzFcD",
-			value: "產品介紹",
-			href: "/product/all",
-			children: [
-				{
-					id: "S5Fo7",
-					value: "客製化產品",
-					href: "/product/customization",
-				},
-				{ id: "OHQdn", value: "規格品", href: "regular" },
-				{ id: "GcEZm", value: "專業檢具", href: "inspection-tools" },
-			],
-		},
-		{
-			id: "JZNex",
-			value: "產業知識",
-			href: "/knowledge",
-			children: [],
-		},
-		{ id: "0VJy-", value: "檔案下載", href: "/download", children: [] },
-		{ id: "ik7fT", value: "最新消息", href: "/latest", children: [] },
-		{
-			id: "lQ4vs",
-			value: "聯絡我們",
-			href: "/contact-us",
-			children: [],
-		},
-	]);
+	const menu = reactive<Theme[]>([]);
 	const list = computed(() =>
-		menu.map((v) => ({ value: v.value, href: v.href }))
+		menu.map((v) => ({ value: v.value, name: v.name }))
+	);
+
+	inject<Promise<AxiosResponse<NavigationData>>>("NavigationData")?.then(
+		(res) => menu.push(...res.data)
 	);
 
 	const navBtn = ref(null);
@@ -79,6 +58,8 @@
 	const navBtnControl = ref<ComponentPublicInstance | null>(null);
 
 	useToggleActive(navBtn, navBtnWrap, navBtnControl);
+
+	const router = useRouter();
 </script>
 <style lang="scss">
 	.jy-nav {
