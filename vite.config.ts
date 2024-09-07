@@ -13,6 +13,9 @@ export default defineConfig({
 				additionalData: `@use "@scss/vars" as *;`,
 			},
 		},
+		postcss: {
+			plugins: [require("autoprefixer")()],
+		},
 	},
 	resolve: {
 		alias: {

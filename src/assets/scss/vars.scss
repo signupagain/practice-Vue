@@ -1,8 +1,10 @@
 // colors
 
 $c-fff: #fff;
-$c-fff79: #ffffff79;
-$c-ccc79: #cccccc79;
+$c-fff80: #ffffff80;
+$c-dad: #dadada;
+$c-ccc80: #cccccc80;
+$c-c6d: #c6d0d6;
 $c-b5b: #b5b5b5;
 $c-999: #999;
 $c-96a: #96a9b3;
@@ -16,6 +18,7 @@ $c-262: #262626;
 $c-222: #222;
 $c-191: #191919;
 $c-0d0: #0d0d0d;
+$c-0001a: #0000001a;
 $c-000: #000;
 
 // fontSizes
@@ -35,3 +38,8 @@ $fs-30: 30px;
 $fs-40: 40px;
 $fs-50: 50px;
 $fs-60: 60px;
+
+// others
+
+$viewMaxWidth: 1500px;
+$mbNavHeight: 65px;

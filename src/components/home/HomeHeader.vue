@@ -68,7 +68,7 @@
 			color: $c-fff;
 			overflow: hidden;
 
-			@media (max-width: 1180px) {
+			@media (max-width: 1204px) {
 				margin-top: 65px;
 			}
 
@@ -76,7 +76,7 @@
 				width: 100%;
 				animation: bigger 5s linear forwards;
 
-				@media (max-width: 1180px) {
+				@media (max-width: 1204px) {
 					height: 820px;
 					object-fit: cover;
 				}
@@ -104,7 +104,7 @@
 				height: fit-content;
 				margin: 190px 0 auto;
 
-				@media (max-width: 1180px) {
+				@media (max-width: 1204px) {
 					margin-top: 297px;
 				}
 
@@ -121,7 +121,7 @@
 				width: 420px;
 				margin-left: auto;
 
-				@media (max-width: 1180px) {
+				@media (max-width: 1204px) {
 					margin-left: revert;
 				}
 
@@ -139,7 +139,7 @@
 				font-size: $fs-14;
 				letter-spacing: 0.5px;
 
-				@media (max-width: 1180px) {
+				@media (max-width: 1204px) {
 					display: none;
 				}
 
@@ -181,7 +181,7 @@
 				&__end {
 					display: block;
 
-					@media (max-width: 1180px) {
+					@media (max-width: 1204px) {
 						font-size: $fs-50;
 					}
 
@@ -195,7 +195,7 @@
 				position: relative;
 				margin: 30px 0 30.5px;
 
-				@media (max-width: 1180px) {
+				@media (max-width: 1204px) {
 					display: none;
 				}
 
