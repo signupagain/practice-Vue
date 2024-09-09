@@ -1,16 +1,16 @@
 <template>
 	<div class="jy-nl" ref="curBtnWrap">
-		<span class="jy-nl-cur" ref="curBtn">{{ curLang }}</span>
+		<span class="jy-nl-cur" ref="curBtn" v-text="t('lang.current')"></span>
 		<ul class="jy-nl-ul" ref="curBtnControl">
 			<li
 				class="jy-nl-li"
-				v-for="{ title, value, active } in langs"
-				:key="title"
+				v-for="(value, index) in t('lang.list', { returnObjects: true })"
+				:key="value"
 			>
 				<a
-					href="javascript://尚不提供多種語言;"
+					href="javascript:console.log('觸發TelePort')//尚不提供多種語言;"
 					class="jy-nl-a"
-					:class="{ active }"
+					:class="{ active: index === t('lang.index') }"
 				>
 					<span class="jy-nl-span">{{ value }}</span>
 				</a>
@@ -19,31 +19,14 @@
 	</div>
 </template>
 <script setup lang="ts">
-	import { langDataRequest } from "@/api/requests";
-	import type { LangsData } from "@/api/types/langData";
 	import { useToggleActive } from "@/use/useToggleActive";
-	import { computed, ref, reactive } from "vue";
+	import { useTranslation } from "i18next-vue";
+	import { ref } from "vue";
 
-	const defaultLang = ref("繁");
-	const langs = reactive<LangsData>([]);
-	const curLang = computed(
-		() => langs.find((lang) => lang.active === true)?.title
-	);
-
-	langDataRequest().then((res) =>
-		langs.push(
-			...res.data.map((obj) =>
-				obj.value === defaultLang.value
-					? Object.assign(obj, { active: true })
-					: obj
-			)
-		)
-	);
-
+	const { t } = useTranslation("nav");
 	const curBtn = ref(null);
 	const curBtnWrap = ref(null);
 	const curBtnControl = ref(null);
-
 	useToggleActive(curBtn, curBtnWrap, curBtnControl);
 </script>
 <style lang="scss">
@@ -64,7 +47,7 @@
 			align-items: center;
 			gap: 10px;
 
-			@media (max-width: 1204px) {
+			@media (max-width: 1180px) {
 				color: $c-4f6;
 				line-height: $mbNavHeight;
 				background: inherit;
@@ -76,7 +59,7 @@
 				height: 16px;
 				background: url(@icon/world.png) center / contain;
 
-				@media (max-width: 1204px) {
+				@media (max-width: 1180px) {
 					background: url(@icon/world_blue.png) center / contain;
 				}
 			}
@@ -89,7 +72,7 @@
 				filter: brightness(0) invert(1);
 				transform: rotate(180deg);
 
-				@media (max-width: 1204px) {
+				@media (max-width: 1180px) {
 					filter: initial;
 				}
 			}

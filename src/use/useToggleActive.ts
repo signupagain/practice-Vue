@@ -1,10 +1,31 @@
 import {
 	onMounted,
 	onUnmounted,
+	ref,
+	watch,
 	type ComponentPublicInstance,
 	type Ref,
 } from "vue";
 import { debounce, type DebouncedFunc } from "lodash-es";
+
+const useToggleTag = "data-usetoggle";
+const order = ref<Ref<HTMLElement | ComponentPublicInstance>[]>([]);
+
+watch(order, (newVal) => {
+	newVal.forEach((activeEl) =>
+		activeEl.value instanceof HTMLElement
+			? activeEl.value.classList.toggle("active", true)
+			: activeEl.value.$el.classList.toggle("active", true)
+	);
+
+	document.querySelectorAll(`[${useToggleTag}].active`).forEach((activeEl) => {
+		const hasActiveEl = newVal
+			.map((v) => (v.value instanceof HTMLElement ? v.value : v.value.$el))
+			.includes(activeEl);
+
+		if (!hasActiveEl) activeEl.classList.toggle("active", false);
+	});
+});
 
 export function useToggleActive(
 	btnEl: Ref<HTMLElement | null>,
@@ -13,20 +34,20 @@ export function useToggleActive(
 ) {
 	type debounceFunc = DebouncedFunc<(e: Event) => void>;
 
-	const attribute = "data-usetoggle";
-	let debounceToggleActive: debounceFunc | null = debounce(toggleActive, 50, {
+	let debounceToggleActive: debounceFunc | null = debounce(toggleActive, 100, {
 		trailing: true,
 	});
-	let debounceInActiveEl: debounceFunc | null = debounce(inActiveEl, 50, {
+	let debounceInActiveEl: debounceFunc | null = debounce(inActiveEl, 100, {
 		trailing: true,
 	});
 
 	onMounted(() => {
-		btnEl.value?.setAttribute(attribute, "");
+		btnEl.value?.setAttribute(useToggleTag, "");
+
 		controls.forEach((el) =>
 			el?.value instanceof HTMLElement
-				? el.value.setAttribute(attribute, "")
-				: el?.value?.$el.setAttribute(attribute, "")
+				? el.value.setAttribute(useToggleTag, "")
+				: el?.value?.$el.setAttribute(useToggleTag, "")
 		);
 
 		btnEl.value?.addEventListener("click", debounceToggleActive);
@@ -42,21 +63,13 @@ export function useToggleActive(
 
 	function toggleActive(e: Event): void {
 		const el = e.target as HTMLElement;
-		const isActive = el.classList.toggle("active");
-
-		document
-			.querySelectorAll(".active")
-			.forEach((activeEl) =>
-				activeEl !== el && activeEl.getAttribute(attribute)
-					? activeEl.classList.toggle("active", false)
-					: null
-			);
-
-		controls.forEach((el) =>
-			el?.value instanceof HTMLElement
-				? el.value.classList.toggle("active", isActive)
-				: el?.value?.$el.classList.toggle("active", isActive)
-		);
+		el.classList.contains("active")
+			? document
+					.querySelectorAll(`[${useToggleTag}].active`)
+					.forEach((activeEl) => activeEl.classList.toggle("active", false))
+			: (order.value = [btnEl, ...controls] as Ref<
+					HTMLElement | ComponentPublicInstance
+			  >[]);
 	}
 
 	function inActiveEl() {

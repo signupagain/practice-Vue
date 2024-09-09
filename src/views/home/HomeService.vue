@@ -4,52 +4,50 @@
 			<HomeHeading
 				class="jy-hhg"
 				title-tag="h2"
-				:words="['SERVICE', 'ITEMS']"
+				:word1="t('title.word1')"
+				:word2="t('title.word2')"
 				color
-				:stretch="55"
 			>
 				<template #shorthand="{ slotWith }">
-					<p :class="[slotWith]">服務項目</p>
+					<p :class="slotWith" v-text="t('subtitle')"></p>
 				</template>
-				<template #description="{ slotWith, isStretch }">
-					<p :class="[slotWith, isStretch]">
-						致力於生產市場所需求的螺絲、螺栓等規格化產品。
-					</p>
+				<template #description="{ slotWith }">
+					<p :class="slotWith" v-text="t('description')"></p>
 				</template>
 			</HomeHeading>
 			<GlobalAnchor class="jy-a" name="tech" />
 		</div>
 		<section class="jy-hs-section">
 			<swiper-container class="jy-hs-ul" ref="ul" init="false">
-				<swiper-slide class="jy-hs-li" v-for="detail of service">
-					<GlobalCard class="jy-card" v-bind="detail" />
+				<swiper-slide
+					class="jy-hs-li"
+					v-for="detail of t('list', { returnObjects: true })"
+					><GlobalCard class="jy-card" v-bind="detail" />
 				</swiper-slide>
 			</swiper-container>
 			<div class="jy-hs-btn__wrap">
 				<button class="jy-hs-btn jy-hs-btn__prev">
-					<span class="jy-hs-btn__span">左滑</span>
+					<span class="jy-hs-btn__span" v-text="$t('button.prev')"></span>
 				</button>
 				<button class="jy-hs-btn jy-hs-btn__next">
-					<span class="jy-hs-btn__span">右滑</span>
+					<span class="jy-hs-btn__span" v-text="$t('button.next')"></span>
 				</button>
 			</div>
 		</section>
 	</article>
 </template>
 <script setup lang="ts">
-	import { serviceDataRequest } from "@/api/requests";
-	import type { ServiceData } from "@/api/types/serviceData";
+	import GlobalAnchor from "@/components/global/GlobalAnchor.vue";
 	import GlobalCard from "@/components/global/GlobalCard.vue";
 	import HomeHeading from "@/components/home/HomeHeading.vue";
+	import { useTranslation } from "i18next-vue";
 	import type { SwiperContainer } from "swiper/element";
 	import { Navigation } from "swiper/modules";
 	import type { SwiperOptions } from "swiper/types";
-	import { onMounted, reactive, ref } from "vue";
+	import { onMounted, ref } from "vue";
 
-	const service = reactive<ServiceData>([]);
-	const servicePromise = serviceDataRequest().then((res) =>
-		service.push(...res.data)
-	);
+	const { t: $t } = useTranslation("common");
+	const { t } = useTranslation("homeservice");
 	const serviceOption: SwiperOptions = {
 		slidesPerView: 1,
 		loop: true,
@@ -76,14 +74,12 @@
 
 	const ul = ref<SwiperContainer | null>(null);
 
-	onMounted(() =>
-		servicePromise.then(() => {
-			if (ul.value) {
-				Object.assign(ul.value, serviceOption);
-				ul.value.initialize();
-			}
-		})
-	);
+	onMounted(() => {
+		if (ul.value) {
+			Object.assign(ul.value, serviceOption);
+			ul.value.initialize();
+		}
+	});
 </script>
 <style lang="scss">
 	.jy-hs {
@@ -92,7 +88,7 @@
 		margin: 0 auto;
 		overflow: hidden;
 
-		@media (max-width: 1204px) {
+		@media (max-width: 1180px) {
 			overflow: visible;
 			padding: 0;
 		}
@@ -102,7 +98,7 @@
 			align-items: start;
 			gap: 77px;
 
-			@media (max-width: 1204px) {
+			@media (max-width: 1180px) {
 				display: block;
 
 				& .jy-a {
@@ -115,7 +111,7 @@
 			position: relative;
 			width: 110%;
 			left: -5%;
-			@media (max-width: 1204px) {
+			@media (max-width: 1180px) {
 				width: auto;
 				position: static;
 			}
@@ -124,7 +120,7 @@
 		&-ul {
 			transform: rotate(-8deg);
 
-			@media (max-width: 1204px) {
+			@media (max-width: 1180px) {
 				transform: none;
 			}
 		}
@@ -138,7 +134,7 @@
 				margin: 20px 40px;
 			}
 
-			@media (max-width: 1204px) {
+			@media (max-width: 1180px) {
 				transform: none;
 				& .jy-card {
 					margin: 0;
@@ -148,7 +144,7 @@
 
 		&-ul,
 		&-li {
-			@media (max-width: 1204px) {
+			@media (max-width: 1180px) {
 				transform: none;
 			}
 		}
@@ -163,7 +159,7 @@
 				display: flex;
 				flex-flow: column-reverse;
 				justify-content: space-between;
-				@media (max-width: 1204px) {
+				@media (max-width: 1180px) {
 					position: static;
 					height: auto;
 					flex-flow: row;
@@ -194,13 +190,13 @@
 
 			&__prev::after {
 				transform: rotate(180deg);
-				@media (max-width: 1204px) {
+				@media (max-width: 1180px) {
 					transform: rotate(-90deg);
 				}
 			}
 
 			&__next::after {
-				@media (max-width: 1204px) {
+				@media (max-width: 1180px) {
 					transform: rotate(90deg);
 				}
 			}

@@ -1,21 +1,19 @@
 <template>
 	<a class="jy-a" href="/" @click.prevent="router.push({ name })">
 		<div class="jy-a-border">
-			<div class="jy-a-text">VIEW MORE</div>
+			<div class="jy-a-text" v-text="t('button.anchor')"></div>
 		</div>
 	</a>
 </template>
 <script setup lang="ts">
+	import { useTranslation } from "i18next-vue";
 	import { useRouter } from "vue-router";
 
-	const { name } = withDefaults(
-		defineProps<{
-			name?: string;
-		}>(),
-		{ name: "notfound" }
-	);
-
+	defineProps<{
+		name: string;
+	}>();
 	const router = useRouter();
+	const { t } = useTranslation("common");
 </script>
 <style lang="scss">
 	.jy-a {

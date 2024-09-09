@@ -1,0 +1,16 @@
+{
+	"title": {
+		"word1": "Professional",
+		"word2": "Manufacturer"
+	},
+	"subtitle": "台灣專業螺絲製造與檢具開發",
+	"description": "持續精進，為客戶解決問題",
+	"images": {
+		"bg": {
+			"alt": "久允螺絲專業製造",
+			"pc": { "src": "/images/JeouYeun_focus.jpg" },
+			"mb": { "src": "/images/JeouYeun_focus_mb.jpg" }
+		}
+	},
+	"link": "SCROLL DOWN"
+}

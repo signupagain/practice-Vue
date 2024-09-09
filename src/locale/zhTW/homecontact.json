@@ -1,0 +1,13 @@
+{
+	"title": {
+		"word1": "CONTACT",
+		"word2": "US"
+	},
+	"subtitle": "聯絡我們",
+	"images": {
+		"building": {
+			"src": "/images/JeouYeun_building.png",
+			"alt": "久允螺絲公廠實景"
+		}
+	}
+}

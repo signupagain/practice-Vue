@@ -1,7 +1,7 @@
 <template>
 	<div class="jy-nav__wrap">
 		<div class="jy-nav">
-			<GlobalLogo active is-on-home />
+			<GlobalLogo is-h1 is-on-home />
 			<div class="jy-nav-x">
 				<NavigationMenu />
 				<NavigationLang />
@@ -27,7 +27,7 @@
 
 		margin-left: 20px;
 		padding-left: 30px;
-		border-bottom-left-radius: 20px;
+		border-bottom-left-radius: $radius;
 		background: $c-fff;
 		box-shadow: 0 0 15px $c-0001a;
 
@@ -35,7 +35,7 @@
 		justify-content: space-between;
 		align-items: center;
 
-		@media (max-width: 1204px) {
+		@media (max-width: 1180px) {
 			margin-left: initial;
 			padding-left: 20px;
 			border-bottom-left-radius: initial;
@@ -46,7 +46,11 @@
 			gap: 30px;
 			font-size: $fs-17;
 
-			@media (max-width: 1204px) {
+			@media (max-width: 1210px) {
+				gap: 5px;
+			}
+
+			@media (max-width: 1180px) {
 				flex-direction: row-reverse;
 				gap: 0;
 			}

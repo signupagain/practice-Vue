@@ -1,16 +1,17 @@
 <template>
 	<figure class="jy-card">
-		<img :src :alt class="jy-card-img" />
+		<img class="jy-card-img" v-bind="image.fig" />
 		<figcaption class="jy-card-title" v-text="title"></figcaption>
-		<p class="jy-card-p" v-text="p"></p>
+		<p class="jy-card-p" v-text="paragraph"></p>
 	</figure>
 </template>
 <script setup lang="ts">
 	defineProps<{
-		src: string;
-		alt: string;
+		image: {
+			fig: { src: string; alt: string };
+		};
 		title: string;
-		p: string;
+		paragraph: string;
 	}>();
 </script>
 <style lang="scss">
@@ -23,7 +24,7 @@
 		gap: 17px;
 		overflow: hidden;
 
-		@media (max-width: 1204px) {
+		@media (max-width: 1180px) {
 			margin: 0;
 		}
 
@@ -32,7 +33,7 @@
 			position: absolute;
 			inset: 0;
 			z-index: -1;
-			border-radius: 20px;
+			border-radius: $radius;
 			border: 1px solid $c-4f6;
 			outline: 4px solid $c-96a80;
 			outline-offset: -5px;
@@ -46,7 +47,7 @@
 
 		&-img {
 			width: 100%;
-			border-radius: 20px;
+			border-radius: $radius;
 		}
 
 		&-title {

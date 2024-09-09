@@ -1,0 +1,33 @@
+{
+	"menu": [
+		{
+			"label": "關於我們",
+			"pathName": "who",
+			"children": [
+				{ "label": "公司簡介", "pathName": "who" },
+				{ "label": "掌握生產技術", "pathName": "tech" },
+				{ "label": "品質政策", "pathName": "policy" },
+				{ "label": "專業檢具開發", "pathName": "tools" }
+			]
+		},
+		{
+			"label": "產品介紹",
+			"pathName": "all",
+			"children": [
+				{ "label": "客製化產品", "pathName": "custom" },
+				{ "label": "規格品", "pathName": "regular" },
+				{ "label": "專業檢具", "pathName": "tools" },
+				{ "label": "所有產品", "pathName": "all" }
+			]
+		},
+		{ "label": "產業知識", "pathName": "know" },
+		{ "label": "檔案下載", "pathName": "download" },
+		{ "label": "最新消息", "pathName": "latest" },
+		{ "label": "聯絡我們", "pathName": "contact" }
+	],
+	"lang": {
+		"current": "繁中",
+		"index": 0,
+		"list": ["繁", "EN"]
+	}
+}

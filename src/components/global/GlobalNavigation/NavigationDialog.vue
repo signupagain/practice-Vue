@@ -1,44 +1,48 @@
 <template>
 	<div class="jy-nav-d">
-		<ul class="jy-nav-d-ul">
-			<li class="jy-nav-d-li" v-for="{ value, name } of list">
-				<a href="/" class="jy-nav-d-a" @click.prevent="router.push(name)">{{
-					value
-				}}</a>
-			</li>
-		</ul>
+		<nav class="jy-nav-d-nav">
+			<ul class="jy-nav-d-ul">
+				<li
+					class="jy-nav-d-li"
+					v-for="{ label, pathName: name } of t('menu', {
+						returnObjects: true,
+					})"
+				>
+					<a
+						href="/"
+						class="jy-nav-d-a"
+						@click.prevent="router.push({ name })"
+						v-text="label"
+					></a>
+				</li>
+			</ul>
+		</nav>
 		<hr class="jy-nav-hr" />
 		<GlobalFollow />
 		<GlobalCopyright />
 	</div>
 </template>
 <script setup lang="ts">
+	import { useTranslation } from "i18next-vue";
 	import { useRouter } from "vue-router";
+	import GlobalCopyright from "../GlobalCopyright.vue";
+	import GlobalFollow from "../GlobalFollow.vue";
 
-	defineProps<{
-		list: {
-			value: string;
-			name: string;
-		}[];
-	}>();
-
+	const { t } = useTranslation("nav");
 	const router = useRouter();
 </script>
 <style lang="scss">
 	.jy-nav {
 		&-d {
-			display: none;
+			display: block;
+			position: fixed;
+			inset: $mbNavHeight 0 0;
+			padding: 0 20px;
+			background: $c-fff;
+			visibility: hidden;
 
-			@media (max-width: 1204px) {
-				display: block;
-				position: fixed;
-				inset: $mbNavHeight 0 0;
-				padding: 0 20px;
-				background: $c-fff;
-				visibility: hidden;
-				&.active {
-					visibility: visible;
-				}
+			&.active {
+				visibility: visible;
 			}
 
 			&-ul {

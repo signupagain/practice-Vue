@@ -1,0 +1,31 @@
+{
+	"company": "久允螺絲",
+	"info": {
+		"add": "40149 台中市東區十甲東路290號",
+		"tel": "04-22136699",
+		"fax": "04-22135555",
+		"mail": "jeouyeun@gmail.com"
+	},
+	"images": {
+		"logo": { "alt": "商標", "src": "/images/logo.svg" }
+	},
+	"apps": {
+		"follow": "follow us.",
+		"list": [
+			{
+				"vendor": "LINE",
+				"logo": "/images/LINE_APP_Android.png"
+			}
+		]
+	},
+	"button": {
+		"anchor": "VIEW MORE",
+		"prev": "前一項",
+		"next": "後一項"
+	},
+	"copyright": {
+		"text": "Copyright © {{year}} 久允螺絲 All Rights Reserved.",
+		"designBy": "Design by iBest",
+		"personal": "本網站僅練習用。"
+	}
+}

@@ -11,7 +11,7 @@
 <style lang="scss">
 	.jy {
 		&-hc + &-hs {
-			margin-top: 120px;
+			margin-top: 104px;
 		}
 	}
 </style>

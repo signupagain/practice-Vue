@@ -1,25 +1,41 @@
 <template>
-	<a href="/" class="jy-logo" :class="{ active }" title="久允螺絲">
-		<img :src="logo" alt="久允螺絲" class="jy-logo-img" :class="{ active }" />
-		<h1 v-if="isOnHome && active" class="jy-logo-name" :class="{ active }">
-			久允螺絲
-		</h1>
-		<span v-if="!active" class="jy-logo-name">久允螺絲</span>
+	<a
+		href="/"
+		class="jy-logo"
+		:class="{ active: isH1 }"
+		:title="t('company')"
+		@click="router.push({ name: 'home' })"
+	>
+		<img
+			class="jy-logo-img"
+			:class="{ active: isH1 }"
+			v-bind="t('images.logo', { returnObjects: true })"
+		/>
+		<h1
+			v-if="isOnHome && isH1"
+			class="jy-logo-name"
+			:class="{ active: isH1 }"
+			v-text="t('company')"
+		></h1>
+		<span v-if="!isH1" class="jy-logo-name" v-text="t('company')"></span>
 	</a>
 </template>
 <script setup lang="ts">
-	import logo from "/public/images/logo.svg";
+	import { useRouter } from "vue-router";
+	import { useTranslation } from "i18next-vue";
 
 	withDefaults(
 		defineProps<{
-			active?: boolean;
+			isH1?: boolean;
 			isOnHome?: boolean;
 		}>(),
 		{
-			active: false,
+			isH1: false,
 			isOnHome: false,
 		}
 	);
+	const router = useRouter();
+	const { t } = useTranslation("common");
 </script>
 <style lang="scss">
 	.jy-logo {
@@ -36,7 +52,7 @@
 		&-img {
 			width: 60px;
 
-			@media (max-width: 1204px) {
+			@media (max-width: 1180px) {
 				&.active {
 					width: 50px;
 				}

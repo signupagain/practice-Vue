@@ -7,84 +7,81 @@
 				<swiper-slide
 					class="jy-hab-li"
 					:class="{ default: hasBorder }"
-					v-for="(src, alt) of paths"
+					v-for="{ alt, src } of paths"
 				>
 					<figure class="jy-hab-fig">
 						<img :src :alt class="jy-hab-fig-img" />
-						<figcaption class="jy-hab-figcaption">{{ alt }}</figcaption>
+						<figcaption class="jy-hab-figcaption" v-text="alt"></figcaption>
 					</figure>
 				</swiper-slide>
 			</swiper-container>
 			<button class="jy-hab-btn jy-hab-btn__prev" :class="{ default: !hasBtn }">
-				<span class="jy-hab-btn__span">左滑</span>
+				<span class="jy-hab-btn__span" v-text="$t('button.prev')"></span>
 			</button>
 			<button class="jy-hab-btn jy-hab-btn__next" :class="{ default: !hasBtn }">
-				<span class="jy-hab-btn__span">右滑</span>
+				<span class="jy-hab-btn__span" v-text="$t('button.next')"></span>
 			</button>
 		</div>
 	</aside>
 </template>
 <script setup lang="ts">
-	import { onMounted, reactive, ref } from "vue";
+	import { computed, onMounted, ref } from "vue";
 	import tool1 from "@img/tool1.png";
 	import tool2 from "@img/tool2.png";
 	import tool3 from "@img/tool3.png";
 	import type { SwiperOptions } from "swiper/types";
 	import type { SwiperContainer } from "swiper/element";
 	import { Autoplay, Navigation } from "swiper/modules";
+	import { useTranslation } from "i18next-vue";
 
-	const paths = reactive({
-		規格螺絲製造銷售: tool1,
-		螺絲檢具製造銷售: tool2,
-		客製化螺絲製造: tool3,
-	});
+	const { t: $t } = useTranslation("common");
+	const { t } = useTranslation("homeabout");
+	const captions = t("list", { returnObjects: true });
+	const imgs = [tool1, tool2, tool3];
+	const paths = computed(() =>
+		captions.map((str, i) => ({ alt: str, src: imgs[i] }))
+	);
 
 	const ul = ref<SwiperContainer | null>(null);
 	const hasBorder = ref();
 	const hasBtn = ref();
-
-	function initStatus() {
-		hasBorder.value = true;
-		hasBtn.value = false;
-	}
+	const swiperParams: SwiperOptions = {
+		modules: [Navigation, Autoplay],
+		navigation: {
+			prevEl: ".jy-hab-btn__prev",
+			nextEl: ".jy-hab-btn__next",
+		},
+		on: {
+			navigationPrev: ({ slidePrev }) => slidePrev,
+			navigationNext: ({ slideNext }) => slideNext,
+			breakpoint: (_, { slidesPerView }) => {
+				initStatus();
+				if (slidesPerView === 1) hasBorder.value = false;
+				if (slidesPerView !== 3) hasBtn.value = true;
+			},
+		},
+		slidesPerView: 1,
+		breakpoints: {
+			752: {
+				slidesPerView: 3,
+				loop: false,
+			},
+			463: {
+				slidesPerView: 2,
+				loop: true,
+				autoplay: {
+					delay: 3000,
+				},
+			},
+		},
+		loop: true,
+		autoplay: {
+			delay: 3000,
+		},
+	};
 
 	onMounted(() => {
 		initStatus();
-
-		const swiperParams: SwiperOptions = {
-			modules: [Navigation, Autoplay],
-			navigation: {
-				prevEl: ".jy-hab-btn__prev",
-				nextEl: ".jy-hab-btn__next",
-			},
-			on: {
-				navigationPrev: ({ slidePrev }) => slidePrev,
-				navigationNext: ({ slideNext }) => slideNext,
-				breakpoint: (_, { slidesPerView }) => {
-					initStatus();
-					if (slidesPerView === 1) hasBorder.value = false;
-					if (slidesPerView !== 3) hasBtn.value = true;
-				},
-			},
-			slidesPerView: 1,
-			breakpoints: {
-				752: {
-					slidesPerView: 3,
-					loop: false,
-				},
-				463: {
-					slidesPerView: 2,
-					loop: true,
-					autoplay: {
-						delay: 3000,
-					},
-				},
-			},
-			loop: true,
-			autoplay: {
-				delay: 3000,
-			},
-		};
 
 		if (ul.value) {
 			Object.assign(ul.value, swiperParams);
@@ -92,6 +89,11 @@
 			ul.value.initialize();
 		}
 	});
+
+	function initStatus() {
+		hasBorder.value = true;
+		hasBtn.value = false;
+	}
 </script>
 <style lang="scss">
 	.jy-hab {

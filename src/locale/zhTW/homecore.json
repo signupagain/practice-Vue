@@ -1,0 +1,39 @@
+{
+	"title": {
+		"word1": "CORE",
+		"word2": "COMPTENCES"
+	},
+	"subtitle": "核心優勢",
+	"list": [
+		{
+			"title": "掌握生產技術",
+			"subtitle": "Master Production Technology",
+			"paragraph": "自營工廠，掌握模具開發能力與生產技術，滿足少量多樣的客製化需求，以技術與經驗找到成本和品質的最佳解。",
+			"images": {
+				"bg": { "src": "/images/JeouYeun_master.jpg", "alt": "掌握生產技術" }
+			},
+			"pathName": "tech"
+		},
+		{
+			"title": "品質政策",
+			"subtitle": "Quality Policy",
+			"paragraph": "嚴格遵循國際規範進行品質管理與各項檢測。廠內檢驗項目包含尺寸檢測、硬度測試、扭力測試、氫脆化測試等等。",
+			"images": {
+				"bg": { "src": "/images/JeouYeun_quality.jpg", "alt": "品質政策" }
+			},
+			"pathName": "policy"
+		},
+		{
+			"title": "專業檢具開發",
+			"subtitle": "Professional Inspection Tool Development",
+			"paragraph": "因應客戶端的需要，開發螺絲檢具與儀器。",
+			"images": {
+				"bg": {
+					"src": "/images/JeouYeun_inspection.jpg",
+					"alt": "專業檢具開發"
+				}
+			},
+			"pathName": "tools"
+		}
+	]
+}

@@ -4,53 +4,48 @@
 			<HomeHeading
 				class="jy-hhg"
 				title-tag="h2"
-				:words
+				:word1="t('title.word1')"
+				:word2="t('title.word2')"
 				color
-				is-about-page
-				:stretch="61.667"
 			>
 				<template #shorthand="{ slotWith }">
-					<p :class="[slotWith]">{{ sub }}</p>
+					<p :class="slotWith" v-text="t('subtitle')"></p>
 				</template>
-				<template #description="{ slotWith, isStretch }">
-					<p :class="[slotWith, isStretch]">
+				<template #description="{ slotWith }">
+					<p :class="slotWith">
 						<strong class="jy-hab-strong"
-							>{{ breadCrumbsArr[0] }}<em class="jy-hab-em">/</em
-							>{{ breadCrumbsArr[1] }}<em class="jy-hab-em">/</em
-							>{{ breadCrumbsArr[2] }}</strong
+							>{{ t("keyword.pro") }}<em class="jy-hab-em">/</em
+							>{{ t("keyword.honest") }}<em class="jy-hab-em">/</em
+							>{{ t("keyword.better") }}</strong
 						>
 					</p>
 				</template>
 			</HomeHeading>
-			<p class="jy-hab-p" v-text="p"></p>
-			<GlobalAnchor class="jy-a" />
+			<template v-for="p of t('paragraph', { returnObjects: true })">
+				<p class="jy-hab-p" v-text="p"></p>
+			</template>
+			<GlobalAnchor class="jy-a" name="who" />
 			<HomeAboutAside class="jy-hab-aside" />
-			<img class="jy-hab-logo" v-bind="aboutLogo" />
+			<img
+				class="jy-hab-logo"
+				v-bind="t('images.logo', { returnObjects: true })"
+			/>
 		</div>
 		<div class="jy-hab-x__right">
-			<img class="jy-hab-img" v-bind="passion" />
+			<img
+				class="jy-hab-img"
+				v-bind="t('images.passion', { returnObjects: true })"
+			/>
 		</div>
 	</div>
 </template>
 <script setup lang="ts">
 	import HomeHeading from "@/components/home/HomeHeading.vue";
 	import HomeAboutAside from "@/components/home/HomeAboutAside.vue";
-	import { computed, reactive, unref } from "vue";
+	import { useTranslation } from "i18next-vue";
+	import GlobalAnchor from "@/components/global/GlobalAnchor.vue";
 
-	const about = reactive({
-		title: "ABOUT US",
-		sub: "關於我們",
-		crumbs: "專業/誠信/持續精進",
-		p: `累積超過35年扣件製造與加工經驗，遵循國際規範，致力於生產市場所需求的螺絲、螺栓等規格化產品。
-並以「為客戶解決問題」為服務宗旨與自我要求，以技術克服成本與品質的矛盾，擁有少量多樣的客製化生產競爭優勢，以專業為客戶找到最佳製造方案。`,
-		aboutLogo: { alt: "久允螺絲", src: "/images/JeouYeun_logo_ab.png" },
-		passion: { alt: "熱愛技術", src: "/images/JeouYeun_passion.jpg" },
-	});
-
-	const { title, sub, crumbs, p, aboutLogo, passion } = unref(about);
-
-	const words = computed(() => title.split(" ") as [string, string]);
-	const breadCrumbsArr = computed(() => crumbs.split("/"));
+	const { t } = useTranslation("homeabout");
 </script>
 <style lang="scss">
 	.jy-hab {
@@ -113,6 +108,10 @@
 			line-height: 1.6;
 			letter-spacing: 0.75px;
 
+			& + & {
+				margin-top: -30px;
+			}
+
 			& + .jy-a {
 				margin-top: 20px;
 				position: relative;
@@ -128,7 +127,7 @@
 			margin-bottom: -30%;
 			width: 790px;
 			background: $c-fff;
-			border-radius: $radius-20;
+			border-radius: $radius;
 
 			@media (max-width: 1180px) {
 				width: unset;
@@ -166,7 +165,7 @@
 
 		&-img {
 			width: 100%;
-			border-radius: $radius-20 0 0 $radius-20;
+			border-radius: $radius 0 0 $radius;
 
 			@media (max-width: 1180px) {
 				width: 95%;

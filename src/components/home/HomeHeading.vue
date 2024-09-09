@@ -1,55 +1,42 @@
 <template>
 	<hgroup class="jy-hhg">
-		<div class="jy-hhg-deco">
-			<div class="jy-hhg-deco__box"></div>
+		<div class="jy-hhg-x">
+			<div class="jy-hhg-deco">
+				<div class="jy-hhg-deco__box"></div>
+			</div>
+			<component :is="titleTag" class="jy-hhg-h">
+				<span class="jy-hhg-h__first">{{ word1 }}</span
+				><span class="jy-hhg-h__second">{{ word2 }}</span>
+			</component>
 		</div>
-		<component :is="titleTag" class="jy-hhg-h">
-			<span class="jy-hhg-h__first">{{ words[0] }}</span
-			><span class="jy-hhg-h__second">{{ words[1] }}</span>
-		</component>
 		<slot name="shorthand" :slot-with="'jy-hhg-subtitle'"></slot>
-		<slot
-			name="description"
-			:slot-with="'jy-hhg-subtitle'"
-			:is-stretch="'active'"
-		></slot>
+		<slot name="description" :slot-with="'jy-hhg-subtitle'"></slot>
 	</hgroup>
 </template>
 <script setup lang="ts">
 	import { computed } from "vue";
 
-	const { color, center, stretch } = withDefaults(
-		defineProps<{
-			titleTag: string;
-			words: [string, string];
-			color?: boolean;
-			center?: boolean;
-			stretch?: number;
-		}>(),
-		{
-			color: false,
-			center: false,
-			stretch: 0,
-		}
-	);
+	const { color, center } = defineProps<{
+		titleTag: string;
+		word1: string;
+		word2: string;
+		color?: boolean;
+		center?: boolean;
+	}>();
 
 	const decoBox = computed(() => (color ? "#4f638f" : "#fff"));
 	const first = computed(() => (color ? "#4f638f" : "#fff"));
 	const second = computed(() => (color ? "#96a9b3" : "#fff"));
 	const subtitle = computed(() => (color ? "inherit" : "#fff"));
-
 	const marginValue = computed(() => (center ? "0 auto" : "0"));
 	const textAlign = computed(() => (center ? "center" : "left"));
-
-	const paddingBottom = computed(() => (stretch === 0 ? "" : `${stretch}px`));
 </script>
 <style lang="scss">
 	.jy-hhg {
-		width: fit-content;
 		text-align: v-bind(textAlign);
 
-		&:has(.active) {
-			padding-bottom: v-bind(paddingBottom);
+		&-x {
+			width: fit-content;
 		}
 
 		&-h {
@@ -94,7 +81,6 @@
 
 			& + & {
 				margin-top: 30px;
-				position: absolute;
 			}
 		}
 	}

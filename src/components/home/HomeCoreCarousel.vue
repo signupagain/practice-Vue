@@ -2,58 +2,54 @@
 	<swiper-container class="jy-pc-txt-ul" ref="txtul" init="false">
 		<swiper-slide
 			class="jy-pc-txt-li"
-			v-for="{ href, title, subtitle, p } of doubleFigures"
+			v-for="{ title, subtitle, pathName: name, paragraph } of doubleFigures"
 		>
-			<a :href class="jy-pc-a">
+			<a href="/" class="jy-pc-a" @click.prevent="router.push({ name })">
 				<hgroup class="jy-pc-hgroup">
-					<h3 class="jy-pc-title">{{ title }}</h3>
-					<p class="jy-pc-subtitle">{{ subtitle }}</p>
+					<h3 class="jy-pc-title" v-text="title"></h3>
+					<p class="jy-pc-subtitle" v-text="subtitle"></p>
 				</hgroup>
-				<p class="jy-pc-p">{{ p }}</p>
+				<p class="jy-pc-p" v-text="paragraph"></p>
 			</a>
 		</swiper-slide>
 	</swiper-container>
 	<div class="jy-pc-x">
 		<swiper-container class="jy-pc-img-ul" ref="imgul" init="false">
-			<swiper-slide class="jy-pc-img-li" v-for="{ src, title: alt } of figures">
-				<img :src :alt class="jy-pc-img" />
+			<swiper-slide class="jy-pc-img-li" v-for="{ images } of figures">
+				<img class="jy-pc-img" v-bind="images.bg" />
 			</swiper-slide>
 		</swiper-container>
 		<button class="jy-pc-btn jy-pc-btn__prev">
-			<span class="jy-pc-btn__span">左滑</span>
+			<span class="jy-pc-btn__span" v-text="$t('button.prev')"></span>
 		</button>
 		<button class="jy-pc-btn jy-pc-btn__next">
-			<span class="jy-pc-btn__span">右滑</span>
+			<span class="jy-pc-btn__span" v-text="$t('button.next')"></span>
 		</button>
 	</div>
 </template>
 <script setup lang="ts">
-	import { coreFiguresDataRequest } from "@/api/requests";
-	import type { CoreFiguresData } from "@/api/types/coreFiguresData";
+	import { useTranslation } from "i18next-vue";
 	import type { SwiperContainer } from "swiper/element";
 	import { Autoplay, Navigation } from "swiper/modules";
 	import type { Swiper, SwiperOptions } from "swiper/types";
-	import { computed, onMounted, reactive, ref } from "vue";
+	import { computed, onMounted, ref } from "vue";
+	import { useRouter } from "vue-router";
 
-	const figures = reactive<CoreFiguresData>([]);
-
-	const setFigures = coreFiguresDataRequest().then((res) =>
-		figures.push(...res.data)
-	);
-
+	const { t: $t } = useTranslation("common");
+	const { t } = useTranslation("homecore");
+	const figures = t("list", { returnObjects: true });
 	const doubleFigures = computed(() =>
 		Array(2)
 			.fill(figures)
 			.reduce((p, c) => [...p, ...c])
 	);
+	const router = useRouter();
 
 	const imgul = ref<SwiperContainer | null>(null);
 	const txtul = ref<SwiperContainer | null>(null);
-
 	const imgulOption: SwiperOptions = {
 		slidesPerView: 1,
 	};
-
 	const txtulOption: SwiperOptions = {
 		...imgulOption,
 		loop: true,
@@ -81,19 +77,17 @@
 		},
 	};
 
-	onMounted(() =>
-		setFigures.then(() => {
-			if (txtul.value) {
-				Object.assign(txtul.value, txtulOption);
-				txtul.value.initialize();
-			}
+	onMounted(() => {
+		if (txtul.value) {
+			Object.assign(txtul.value, txtulOption);
+			txtul.value.initialize();
+		}
 
-			if (imgul.value) {
-				Object.assign(imgul.value, imgulOption);
-				imgul.value.initialize();
-			}
-		})
-	);
+		if (imgul.value) {
+			Object.assign(imgul.value, imgulOption);
+			imgul.value.initialize();
+		}
+	});
 </script>
 <style lang="scss">
 	.jy-pc {
@@ -104,11 +98,12 @@
 			}
 
 			&-li.swiper-slide-active {
-				border: 1px solid $c-96a;
-				border-radius: 0 0 20px 20px;
+				outline-offset: -3px;
+				outline: 3px solid $c-96a;
+				border-radius: 0 0 $radius $radius;
 
 				@media (max-width: 640px) {
-					border: none;
+					outline: none;
 				}
 			}
 		}

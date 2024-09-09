@@ -1,25 +1,26 @@
 <template>
 	<div class="jy-follow">
-		<p class="jy-follow-p">follow us.</p>
+		<p class="jy-follow-p" v-text="t('apps.follow')"></p>
 		<ul class="jy-follow-ul">
 			<li
 				class="jy-follow-li"
-				v-for="{ path: href, logo: src, name: alt } of apps"
+				v-for="{ logo: src, vendor: alt } of t('apps.list', {
+					returnObjects: true,
+				})"
 			>
-				<a :href class="jy-follow-a"><img :src :alt class="jy-follow-img" /></a>
+				<a
+					href="javascript:console.log('GlobalFollow觸發Teleport')"
+					class="jy-follow-a"
+					><img :src :alt class="jy-follow-img"
+				/></a>
 			</li>
 		</ul>
 	</div>
 </template>
 <script setup lang="ts">
-	import type { ClientData } from "@/api/types/clientData";
-	import type { AxiosResponse } from "axios";
-	import { inject, ref } from "vue";
+	import { useTranslation } from "i18next-vue";
 
-	const apps = ref();
-	inject<Promise<AxiosResponse<ClientData>>>("ClientData")?.then(
-		(res) => (apps.value = res.data.apps)
-	);
+	const { t } = useTranslation("common");
 </script>
 <style lang="scss">
 	.jy-follow {

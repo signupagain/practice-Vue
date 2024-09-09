@@ -4,62 +4,39 @@
 		<div class="jy-hhead-x">
 			<hgroup class="jy-hhead-hg">
 				<h2 class="jy-hhead-title">
-					<span class="jy-hhead-title__start">{{ title.start }}</span>
-					<span class="jy-hhead-title__end">{{ title.end }}</span>
+					<span class="jy-hhead-title__start">{{ t("title.word1") }}</span>
+					<span class="jy-hhead-title__end">{{ t("title.word2") }}</span>
 				</h2>
 				<div class="jy-hhead-deco">
 					<div class="jy-hhead-deco__logo"></div>
 					<div class="jy-hhead-deco__line"></div>
 				</div>
-				<p class="jy-hhead-sub">{{ sub }}</p>
-				<p class="jy-hhead-descr">{{ description }}</p>
+				<p class="jy-hhead-sub">{{ t("subtitle") }}</p>
+				<p class="jy-hhead-descr">{{ t("description") }}</p>
 				<GlobalAnchor name="who" class="jy-a" />
 			</hgroup>
 		</div>
-		<img class="jy-hhead-img" :src="src.pc" :alt />
-		<img class="jy-hhead-img jy-hhead-img__mb" :src="src.mb" :alt />
+		<img
+			class="jy-hhead-img"
+			:src="t('images.bg.pc.src')"
+			:alt="t('images.bg.alt')"
+		/>
+		<img
+			class="jy-hhead-img jy-hhead-img__mb"
+			:src="t('images.bg.mb.src')"
+			:alt="t('images.bg.alt')"
+		/>
 		<a class="jy-hhead-a" href="#about">
-			<span class="jy-hhead-a-span">SCROLL DOWN</span>
+			<span class="jy-hhead-a-span" v-text="t('link')"></span>
 		</a>
 	</header>
 </template>
 <script setup lang="ts">
-	import { ref, unref, type Ref } from "vue";
+	import { useTranslation } from "i18next-vue";
+	import GlobalAnchor from "../global/GlobalAnchor.vue";
 	import GlobalNavigation from "../global/GlobalNavigation/index.vue";
 
-	interface Header {
-		title: Title;
-		sub: string;
-		description: string;
-		src: Src;
-		alt: string;
-	}
-
-	interface Title {
-		start: string;
-		end: string;
-	}
-
-	interface Src {
-		pc: string;
-		mb: string;
-	}
-
-	const hearder = ref<Header | null>({
-		title: {
-			start: "Professional",
-			end: "Manufacturer",
-		},
-		sub: "台灣專業螺絲製造與檢具開發",
-		description: "持續精進，為客戶解決問題",
-		src: {
-			pc: "/images/JeouYeun_focus.jpg",
-			mb: "/images/JeouYeun_focus_mb.jpg",
-		},
-		alt: "久允螺絲專業製造",
-	});
-
-	const { title, sub, description, src, alt } = unref(hearder as Ref<Header>);
+	const { t } = useTranslation("homeheader");
 </script>
 <style lang="scss">
 	.jy {
@@ -68,7 +45,7 @@
 			color: $c-fff;
 			overflow: hidden;
 
-			@media (max-width: 1204px) {
+			@media (max-width: 1180px) {
 				margin-top: 65px;
 			}
 
@@ -76,7 +53,7 @@
 				width: 100%;
 				animation: bigger 5s linear forwards;
 
-				@media (max-width: 1204px) {
+				@media (max-width: 1180px) {
 					height: 820px;
 					object-fit: cover;
 				}
@@ -104,7 +81,7 @@
 				height: fit-content;
 				margin: 190px 0 auto;
 
-				@media (max-width: 1204px) {
+				@media (max-width: 1180px) {
 					margin-top: 297px;
 				}
 
@@ -121,7 +98,7 @@
 				width: 420px;
 				margin-left: auto;
 
-				@media (max-width: 1204px) {
+				@media (max-width: 1180px) {
 					margin-left: revert;
 				}
 
@@ -139,7 +116,7 @@
 				font-size: $fs-14;
 				letter-spacing: 0.5px;
 
-				@media (max-width: 1204px) {
+				@media (max-width: 1180px) {
 					display: none;
 				}
 
@@ -181,7 +158,7 @@
 				&__end {
 					display: block;
 
-					@media (max-width: 1204px) {
+					@media (max-width: 1180px) {
 						font-size: $fs-50;
 					}
 
@@ -195,7 +172,7 @@
 				position: relative;
 				margin: 30px 0 30.5px;
 
-				@media (max-width: 1204px) {
+				@media (max-width: 1180px) {
 					display: none;
 				}
 

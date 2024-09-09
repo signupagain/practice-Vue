@@ -1,65 +1,59 @@
 <template>
-	<div class="jy-nav-m" ref="navBtnWrap">
+	<div class="jy-nav-m">
 		<ul class="jy-nav-m-ul">
-			<li class="jy-nav-m-li" v-for="{ id, value, children, name } of menu" :id>
-				<a href="/" class="jy-nav-m-a" @click.prevent="router.push({ name })">{{
-					value
-				}}</a>
+			<li
+				class="jy-nav-m-li"
+				v-for="{ label, pathName: name, children } of t('menu', {
+					returnObjects: true,
+				})"
+				:id="label"
+			>
+				<a
+					href="/"
+					class="jy-nav-m-a"
+					@click.prevent="router.push({ name, params: { page: page ?? '' } })"
+					v-text="label"
+				></a>
 				<div class="jy-nav-m__line"></div>
-				<ul class="jy-nav-m-li-ul" v-if="children.length">
+				<ul class="jy-nav-m-li-ul" v-if="children">
 					<li
 						class="jy-nav-m-li-li"
-						v-for="{ id, value, name } of children"
-						:id
+						v-for="{ label, pathName: name } of children"
+						:id="label"
 					>
 						<a
 							href="/"
 							class="jy-nav-m-li-a"
 							@click.prevent="router.push({ name })"
-							>{{ value }}</a
-						>
+							v-text="label"
+						></a>
 					</li>
 				</ul>
 			</li>
 		</ul>
-		<button class="jy-nav-btn" ref="navBtn">
-			<div class="jy-nav-i jy-nav-i__top"></div>
-			<div class="jy-nav-i jy-nav-i__center"></div>
-			<div class="jy-nav-i jy-nav-i__bottom"></div>
-		</button>
-		<NavigationDialog :list ref="navBtnControl" />
+		<div class="jy-nav-btn__wrap" ref="navBtnWrap">
+			<button class="jy-nav-btn" ref="navBtn">
+				<div class="jy-nav-i jy-nav-i__top"></div>
+				<div class="jy-nav-i jy-nav-i__center"></div>
+				<div class="jy-nav-i jy-nav-i__bottom"></div>
+			</button>
+			<NavigationDialog ref="navBtnControl" />
+		</div>
 	</div>
 </template>
 <script setup lang="ts">
-	import {
-		computed,
-		inject,
-		reactive,
-		ref,
-		type ComponentPublicInstance,
-	} from "vue";
+	import { ref, type ComponentPublicInstance } from "vue";
 	import NavigationDialog from "./NavigationDialog.vue";
 	import { useToggleActive } from "@/use/useToggleActive";
-	import type { AxiosResponse } from "axios";
-	import type { NavigationData, Theme } from "@/api/types/navigationData";
 	import { useRouter } from "vue-router";
+	import { useTranslation } from "i18next-vue";
 
-	const menu = reactive<Theme[]>([]);
-	const list = computed(() =>
-		menu.map((v) => ({ value: v.value, name: v.name }))
-	);
-
-	inject<Promise<AxiosResponse<NavigationData>>>("NavigationData")?.then(
-		(res) => menu.push(...res.data)
-	);
-
+	const { t } = useTranslation("nav");
+	const router = useRouter();
 	const navBtn = ref(null);
 	const navBtnWrap = ref(null);
 	const navBtnControl = ref<ComponentPublicInstance | null>(null);
-
 	useToggleActive(navBtn, navBtnWrap, navBtnControl);
-
-	const router = useRouter();
 </script>
 <style lang="scss">
 	.jy-nav {
@@ -69,7 +63,7 @@
 				display: flex;
 				gap: 4.28px;
 
-				@media (max-width: 1204px) {
+				@media (max-width: 1180px) {
 					display: none;
 				}
 			}
@@ -133,17 +127,20 @@
 		}
 
 		&-btn {
-			display: none;
-
-			@media (max-width: 1204px) {
-				display: block;
-				position: relative;
-				width: $mbNavHeight;
-				height: $mbNavHeight;
-				padding: 19.5px;
-				border: none;
-				background-color: $c-4f6;
+			&__wrap {
+				display: none;
+				@media (max-width: 1180px) {
+					display: block;
+				}
 			}
+
+			display: block;
+			position: relative;
+			width: $mbNavHeight;
+			height: $mbNavHeight;
+			padding: 19.5px;
+			border: none;
+			background-color: $c-4f6;
 
 			&.active {
 				.jy-nav-i__top {
