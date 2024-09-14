@@ -7,7 +7,8 @@
 		"email": "jeouyeun@gmail.com"
 	},
 	"images": {
-		"logo": { "alt": "商標", "src": "/images/logo.svg" }
+		"logo": { "alt": "商標", "src": "/images/logo.svg" },
+		"header": { "alt": "久允螺絲大門", "src": "/images/JeouYeun_factory.png" }
 	},
 	"apps": {
 		"follow": "follow us.",

@@ -13,7 +13,7 @@
 				</div>
 				<p class="jy-hhead-sub">{{ t("subtitle") }}</p>
 				<p class="jy-hhead-descr">{{ t("description") }}</p>
-				<GlobalAnchor name="who" class="jy-a" />
+				<GlobalAnchor name="about" page="who-we-are" class="jy-a" />
 			</hgroup>
 		</div>
 		<img

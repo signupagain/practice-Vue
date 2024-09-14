@@ -24,7 +24,7 @@
 			<template v-for="p of t('paragraph', { returnObjects: true })">
 				<p class="jy-hab-p" v-text="p"></p>
 			</template>
-			<GlobalAnchor class="jy-a" name="who" />
+			<GlobalAnchor class="jy-a" name="about" page="who-we-are" />
 			<HomeAboutAside class="jy-hab-aside" />
 			<img
 				class="jy-hab-logo"

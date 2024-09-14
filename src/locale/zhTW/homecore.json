@@ -12,7 +12,7 @@
 			"images": {
 				"bg": { "src": "/images/JeouYeun_master.jpg", "alt": "掌握生產技術" }
 			},
-			"pathName": "tech"
+			"page": "technology"
 		},
 		{
 			"title": "品質政策",
@@ -21,7 +21,7 @@
 			"images": {
 				"bg": { "src": "/images/JeouYeun_quality.jpg", "alt": "品質政策" }
 			},
-			"pathName": "policy"
+			"page": "policy"
 		},
 		{
 			"title": "專業檢具開發",
@@ -29,11 +29,11 @@
 			"paragraph": "因應客戶端的需要，開發螺絲檢具與儀器。",
 			"images": {
 				"bg": {
-					"src": "/images/JeouYeun_inspection.jpg",
+					"src": "/images/JeouYeun_detail.jpg",
 					"alt": "專業檢具開發"
 				}
 			},
-			"pathName": "tools"
+			"page": "inspection-tools-development"
 		}
 	]
 }

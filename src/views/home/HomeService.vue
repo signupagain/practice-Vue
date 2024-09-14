@@ -15,7 +15,7 @@
 					<p :class="slotWith" v-text="t('description')"></p>
 				</template>
 			</HomeHeading>
-			<GlobalAnchor class="jy-a" name="tech" />
+			<GlobalAnchor class="jy-a" name="about" page="technology" />
 		</div>
 		<section class="jy-hs-section">
 			<swiper-container class="jy-hs-ul" ref="ul" init="false">

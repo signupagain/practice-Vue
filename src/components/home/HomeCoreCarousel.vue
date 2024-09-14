@@ -2,9 +2,13 @@
 	<swiper-container class="jy-pc-txt-ul" ref="txtul" init="false">
 		<swiper-slide
 			class="jy-pc-txt-li"
-			v-for="{ title, subtitle, pathName: name, paragraph } of doubleFigures"
+			v-for="{ title, subtitle, page, paragraph } of doubleFigures"
 		>
-			<a href="/" class="jy-pc-a" @click.prevent="router.push({ name })">
+			<a
+				href="/"
+				class="jy-pc-a"
+				@click.prevent="router.push({ name: 'about', params: { page } })"
+			>
 				<hgroup class="jy-pc-hgroup">
 					<h3 class="jy-pc-title" v-text="title"></h3>
 					<p class="jy-pc-subtitle" v-text="subtitle"></p>

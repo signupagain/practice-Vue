@@ -6,14 +6,14 @@
 			<ul class="jy-footer-ul">
 				<li
 					class="jy-footer-li"
-					v-for="{ label, pathName: name } of t('menu', {
+					v-for="{ label, name, page } of t('menu', {
 						returnObjects: true,
 					})"
 				>
 					<a
 						href="/"
 						class="jy-footer-a"
-						@click.prevent="router.push({ name })"
+						@click.prevent="router.push({ name, params: { page } })"
 						v-text="label"
 					></a>
 				</li>

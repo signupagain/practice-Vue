@@ -1,5 +1,9 @@
 <template>
-	<a class="jy-a" href="/" @click.prevent="router.push({ name })">
+	<a
+		class="jy-a"
+		href="/"
+		@click.prevent="router.push({ name, params: { page } })"
+	>
 		<div class="jy-a-border">
 			<div class="jy-a-text" v-text="t('button.anchor')"></div>
 		</div>
@@ -11,6 +15,7 @@
 
 	defineProps<{
 		name: string;
+		page: string;
 	}>();
 	const router = useRouter();
 	const { t } = useTranslation("common");

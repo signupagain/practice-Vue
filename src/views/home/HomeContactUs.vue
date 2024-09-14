@@ -11,7 +11,7 @@
 					<p :class="slotWith" v-text="t('subtitle')"></p>
 				</template>
 			</HomeHeading>
-			<GlobalAnchor name="contact" />
+			<GlobalAnchor name="contact" page="" />
 		</div>
 		<img
 			class="jy-hcu-img"

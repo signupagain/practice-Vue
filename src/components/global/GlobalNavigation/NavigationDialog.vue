@@ -4,14 +4,14 @@
 			<ul class="jy-nav-d-ul">
 				<li
 					class="jy-nav-d-li"
-					v-for="{ label, pathName: name } of t('menu', {
+					v-for="{ label, name, page } of t('menu', {
 						returnObjects: true,
 					})"
 				>
 					<a
 						href="/"
 						class="jy-nav-d-a"
-						@click.prevent="router.push({ name })"
+						@click.prevent="router.push({ name, params: { page } })"
 						v-text="label"
 					></a>
 				</li>

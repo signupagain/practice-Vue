@@ -3,7 +3,7 @@
 		<ul class="jy-nav-m-ul">
 			<li
 				class="jy-nav-m-li"
-				v-for="{ label, pathName: name, children } of t('menu', {
+				v-for="{ label, name, children, page } of t('menu', {
 					returnObjects: true,
 				})"
 				:id="label"
@@ -18,13 +18,18 @@
 				<ul class="jy-nav-m-li-ul" v-if="children">
 					<li
 						class="jy-nav-m-li-li"
-						v-for="{ label, pathName: name } of children"
+						v-for="{ label, page } of children"
 						:id="label"
 					>
 						<a
 							href="/"
 							class="jy-nav-m-li-a"
-							@click.prevent="router.push({ name })"
+							@click.prevent="
+								router.push({
+									name,
+									params: { page: page ? page : '' },
+								})
+							"
 							v-text="label"
 						></a>
 					</li>
