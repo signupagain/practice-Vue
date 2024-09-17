@@ -1,0 +1,159 @@
+{
+	"contents": [
+		{
+			"title": "公司簡介",
+			"page": "who-we-are",
+			"article": {
+				"title": "久允螺絲有限公司",
+				"paragraph": "久允螺絲有限公司為成立三十多年的扣件品牌，並自營製造廠，具備國際規格品與客製化生產的專業技術，致力於生產市場所需求的螺絲、螺栓等扣件產品，在中部業界享有口碑。本公司秉持專業、誠信、精進之理念持續成長，以「為客戶解決問題」為服務宗旨與自我要求，以技術克服成本與品質的矛盾，以專業為客戶找到最佳製造方案。",
+				"image": {
+					"alt": "久允公司外貌",
+					"src": "/images/JeouYeun_building2.png"
+				}
+			}
+		},
+		{
+			"title": "掌握生產技術",
+			"page": "technology",
+			"article": {
+				"title": "掌握生產技術 & 專業知識",
+				"paragraph": "自營工廠，掌握模具開發能力與生產技術，從材質、加工需求、熱處理、表面處理，到各項檢測、試驗、光學篩選等，滿足少量多樣的客製化需求，並以技術與經驗找到成本和品質的最佳解。廠內機台種類包含一模、兩模、三模、冲六角頭、穿華司、割一字等等。",
+				"image": {
+					"alt": "久允注重生產細節",
+					"src": "/images/JeouYeun_focus-s.png"
+				}
+			},
+			"details": {
+				"title": "生產技術與機台",
+				"figures": [
+					{
+						"image": {
+							"src": "/images/JeouYeun_fully_stock_s.png",
+							"alt": "久允庫存多樣"
+						},
+						"caption": "模具開發",
+						"paragraph": "有多樣的現有模具為客戶節省生產成本；特殊規格螺絲可提供最佳生產建議，並協助開發模具進行生產。"
+					},
+					{
+						"image": {
+							"src": "/images/JeouYeun_detail_s.png",
+							"alt": "搓牙畫面"
+						},
+						"caption": "成型 & 搓牙",
+						"paragraph": "廠內基本車型包含三模六冲、二模四冲、一模二冲打頭成型車與搓牙機數台。"
+					},
+					{
+						"image": {
+							"src": "/images/JeouYeun_combine.png",
+							"alt": "久允生產組合螺絲"
+						},
+						"caption": "組合螺絲",
+						"paragraph": "廠內設有穿華司機數台，能生產附彈簧華司、平華司、碟型華司等各式特殊華司的組合螺絲。"
+					},
+					{
+						"image": {
+							"src": "/images/JeouYeun_hex.png",
+							"alt": "久允具備沖六角頭"
+						},
+						"caption": "沖六角頭",
+						"paragraph": "廠內具備冲六角頭車台，提供除了模具內生產的另一項選擇。"
+					},
+					{
+						"image": {
+							"src": "/images/JeouYeun_pro.png",
+							"alt": "久允具備各項加工"
+						},
+						"caption": "各項加工",
+						"paragraph": "能處理如割尾、割一字、車修、鑽孔、攻內牙等各項加工程序。"
+					},
+					{
+						"image": {
+							"src": "/images/JeouYeun_scrow.png",
+							"alt": "久允支持各項製程"
+						},
+						"caption": "各項製程",
+						"paragraph": "能處理各級熱處理；電鍍、染黑等表面處理；清洗、烘烤、防鬆膠等後續製程。"
+					}
+				]
+			}
+		},
+		{
+			"title": "品質政策",
+			"page": "policy",
+			"article": {
+				"title": "品質政策",
+				"paragraph": "品質是我們與客戶之間的信任基礎，是我們與協力廠商之間的合作共識。我們嚴格遵循國際規範進行品質管理與各項檢測。廠內檢驗項目包含尺寸檢測、硬度測試、扭力測試、氫脆化測試等等，並提供相關檢測報告。",
+				"image": {
+					"alt": "久允對尺寸精確有所把關",
+					"src": "/images/JeouYeun_master_s.png"
+				}
+			},
+			"details": {
+				"title": "專業檢測技術",
+				"figures": [
+					{
+						"image": {
+							"src": "/images/JeouYeun_optical_projection.png",
+							"alt": "使用光學投影畫面"
+						},
+						"caption": "光學投影",
+						"paragraph": "廠內生產端與品管室皆具備光學投影機，能精準檢視產品尺寸與成型品質。"
+					},
+					{
+						"image": {
+							"src": "/images/JeouYeun_quality_s.png",
+							"alt": "運用光學篩選畫面"
+						},
+						"caption": "光學篩選",
+						"paragraph": "廠內具備光學篩選機，能進行產品尺寸全檢，或針對混料、瑕疵等狀況進行光學篩檢。"
+					},
+					{
+						"image": {
+							"src": "/images/JeouYeun_inspection_s.png",
+							"alt": "同心度檢測器"
+						},
+						"caption": "同心度檢測",
+						"paragraph": "廠內生產端與品管室皆具備同心儀，依據規範要求檢測產品的同心度，確保產品品質。"
+					},
+					{
+						"image": {
+							"src": "/images/JeouYeun_hardness_test.png",
+							"alt": "硬度測試畫面"
+						},
+						"caption": "硬度測試",
+						"paragraph": "廠內具備硬度測試相關設備與技術，包括切割機、鑲埋機、洛式硬度檢測儀，以及維式硬度檢測儀。"
+					},
+					{
+						"image": {
+							"src": "/images/JeouYeun_torque_test.png",
+							"alt": "扭力測試畫面"
+						},
+						"caption": "扭力測試",
+						"paragraph": "藉由扭力測試確保產品達到規範要求的安全性，確保產品的緊固力與安全性；並提供適當的數據，防止產品在使用上過度扭曲。"
+					},
+					{
+						"image": {
+							"src": "/images/JeouYeun_embrittlement.png",
+							"alt": "氫脆化測試過程"
+						},
+						"caption": "氫脆化測試",
+						"paragraph": "藉由氫脆化測試，確保產品沒有在熱處理和電鍍製程中產生氫脆化現象，造成產品脆斷或強度降低。"
+					}
+				]
+			}
+		},
+		{
+			"title": "專業檢具開發",
+			"page": "inspection-tools-development",
+			"article": {
+				"title": "專業檢具開發",
+				"paragraph": "除了螺絲與螺栓製造專業，久允也因應客戶端的需要，投入螺絲檢具與儀器的開發製造，包含同心儀、深度規、插規等。",
+				"image": {
+					"alt": "檢具開發應需求客制",
+					"src": "/images/JeouYeun_inspection.png"
+				}
+			}
+		}
+	],
+	"select": "選擇介紹內容: "
+}

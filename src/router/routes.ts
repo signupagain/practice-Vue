@@ -4,13 +4,7 @@ import GlobalFooter from "@/components/global/GlobalFooter.vue";
 import GlobalHeader from "@/components/global/GlobalHeader.vue";
 import HomeHeader from "@/components/home/HomeHeader.vue";
 import HomeView from "@/views/home/HomeView.vue";
-
-const homeComponents = {
-	Header: HomeHeader,
-	default: HomeView,
-	Footer: GlobalFooter,
-} as const;
-const components = { Header: GlobalHeader, Footer: GlobalFooter } as const;
+import AboutView from "@/views/AboutView.vue";
 
 export const routes: RouteRecordRaw[] = [
 	{
@@ -26,32 +20,15 @@ export const routes: RouteRecordRaw[] = [
 		name: "about",
 		path: "/about/:page",
 		meta: { title: "ABOUT US", subtitle: "關於我們" },
-		children: [
-			{
-				path: "who-we-are",
-				name: "who",
-				components,
-			},
-			{
-				path: "technology",
-				name: "tech",
-				components,
-			},
-			{
-				path: "policy",
-				name: "policy",
-				components,
-			},
-			{
-				path: "inspection-tools-development",
-				name: "dev",
-				components,
-			},
-		],
+		components: {
+			header: GlobalHeader,
+			default: AboutView,
+			footer: GlobalFooter,
+		},
+		props: { header: false, default: true, footer: false },
 	},
 	{
-		name: "product",
-		path: "/product/:page?",
+		path: "/product/:page",
 		meta: { title: "PRODUCTS", subtitle: "產品介紹" },
 		components: {
 			header: GlobalHeader,
@@ -92,7 +69,7 @@ export const routes: RouteRecordRaw[] = [
 	{
 		name: "contact",
 		path: "/contact-us/:page?",
-		// meta: { title: "CONTACT US", default: ProductView, subtitle: "聯絡我們" },
+		meta: { title: "CONTACT US", subtitle: "聯絡我們" },
 		components: { header: GlobalHeader, footer: GlobalFooter },
 	},
 	{
