@@ -1,15 +1,20 @@
+import GlobalFooter from "@/components/global/GlobalFooter.vue";
 import HomeHeader from "@/components/home/HomeHeader.vue";
 import HomeView from "@/views/home/HomeView.vue";
 import type { RouteRecordRaw } from "vue-router";
+
+const homeComponents = {
+	Header: HomeHeader,
+	default: HomeView,
+	Footer: GlobalFooter,
+};
+const components = { Footer: GlobalFooter };
 
 export const routes: RouteRecordRaw[] = [
 	{
 		path: "",
 		name: "home",
-		components: {
-			Header: HomeHeader,
-			default: HomeView,
-		},
+		components: homeComponents,
 	},
 	{
 		path: "/about",
@@ -17,22 +22,22 @@ export const routes: RouteRecordRaw[] = [
 			{
 				path: "who-we-are",
 				name: "who",
-				components: {},
+				components,
 			},
 			{
 				path: "technology",
 				name: "tech",
-				components: {},
+				components,
 			},
 			{
 				path: "policy",
 				name: "policy",
-				components: {},
+				components,
 			},
 			{
 				path: "inspection-tools",
 				name: "tools",
-				components: {},
+				components,
 			},
 		],
 	},
@@ -42,22 +47,22 @@ export const routes: RouteRecordRaw[] = [
 			{
 				path: "all",
 				name: "all",
-				components: {},
+				components,
 			},
 			{
 				path: "customization",
 				name: "custom",
-				components: {},
+				components,
 			},
 			{
 				path: "regular",
 				name: "regular",
-				components: {},
+				components,
 			},
 			{
 				path: "inspection-tools",
 				name: "tools",
-				components: {},
+				components,
 			},
 		],
 	},
@@ -84,6 +89,6 @@ export const routes: RouteRecordRaw[] = [
 	{
 		path: "/:exclude*",
 		name: "notfound",
-		components: {},
+		components,
 	},
 ];
