@@ -8,7 +8,8 @@
 	},
 	"images": {
 		"logo": { "alt": "商標", "src": "/images/logo.svg" },
-		"header": { "alt": "久允螺絲大門", "src": "/images/JeouYeun_factory.png" }
+		"header": { "alt": "久允螺絲大門", "src": "/images/JeouYeun_factory.png" },
+		"draw": { "alt": "螺絲插圖", "src": "/images/JeouYeun_scrow_draw.png" }
 	},
 	"apps": {
 		"follow": "follow us.",

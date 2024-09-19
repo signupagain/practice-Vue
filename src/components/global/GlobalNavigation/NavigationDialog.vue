@@ -11,7 +11,7 @@
 					<a
 						href="/"
 						class="jy-nav-d-a"
-						@click.prevent="router.push({ name, params: { page } })"
+						@click.prevent="router.push({ name, params: { page: page ?? '' } })"
 						v-text="label"
 					></a>
 				</li>

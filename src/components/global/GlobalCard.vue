@@ -1,18 +1,24 @@
 <template>
 	<figure class="jy-card">
-		<img class="jy-card-img" v-bind="image.fig" />
+		<img class="jy-card-img" v-bind="img" />
 		<figcaption class="jy-card-title" v-text="title"></figcaption>
-		<p class="jy-card-p" v-text="paragraph"></p>
+		<p class="jy-card-p" v-if="paragraph" v-text="paragraph"></p>
 	</figure>
 </template>
 <script setup lang="ts">
-	defineProps<{
-		image: {
-			fig: { src: string; alt: string };
-		};
+	import { useTranslation } from "i18next-vue";
+	import { computed } from "vue";
+
+	const { image } = defineProps<{
+		image?: { src: string; alt: string };
 		title: string;
-		paragraph: string;
+		paragraph?: string;
 	}>();
+
+	const { t } = useTranslation("common");
+	const img = computed(() =>
+		image ? image : t("images.draw", { returnObjects: true })
+	);
 </script>
 <style lang="scss">
 	.jy-card {
