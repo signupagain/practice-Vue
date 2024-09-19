@@ -5,6 +5,7 @@ import GlobalHeader from "@/components/global/GlobalHeader.vue";
 import HomeHeader from "@/components/home/HomeHeader.vue";
 import HomeView from "@/views/home/HomeView.vue";
 import AboutView from "@/views/AboutView.vue";
+import ProductView from "@/views/ProductView.vue";
 
 export const routes: RouteRecordRaw[] = [
 	{
@@ -28,13 +29,26 @@ export const routes: RouteRecordRaw[] = [
 		props: { header: false, default: true, footer: false },
 	},
 	{
-		path: "/product/:page",
+		name: "product",
+		path: "/product/:page?",
 		meta: { title: "PRODUCTS", subtitle: "產品介紹" },
 		components: {
 			header: GlobalHeader,
-			// default: ,
+			default: ProductView,
 			footer: GlobalFooter,
 		},
+		props: { header: false, default: true, footer: false },
+	},
+	{
+		name: "detail",
+		path: "/products-detail/:page",
+		meta: { title: "PRODUCTS", subtitle: "產品介紹" },
+		components: {
+			header: GlobalHeader,
+			default: ProductView,
+			footer: GlobalFooter,
+		},
+		props: { header: false, default: true, footer: false },
 	},
 	{
 		name: "know",

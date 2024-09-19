@@ -1,0 +1,71 @@
+{
+	"title": "產品分類",
+	"menuitem": [
+		{
+			"label": "客製化產品",
+			"page": "customization",
+			"children": [
+				{
+					"title": "梅花孔系列",
+					"page": "hexalobular"
+				},
+				{
+					"title": "內六角孔系列",
+					"page": "hexagon"
+				},
+				{
+					"title": "六角頭系列",
+					"page": "hex"
+				},
+				{
+					"title": "華司面頭型系列",
+					"page": "washerhead"
+				},
+				{
+					"title": "組合螺絲系列",
+					"page": "sems"
+				},
+				{
+					"title": "一字槽系列",
+					"page": "slotted"
+				},
+				{
+					"title": "馬車螺絲系列",
+					"page": "carriage"
+				}
+			]
+		},
+		{
+			"label": "規格品",
+			"page": "regular",
+			"children": [
+				{
+					"title": "圓頭十字機械牙",
+					"page": "mr"
+				},
+				{
+					"title": "大扁頭十字機械牙",
+					"page": "mt"
+				}
+			]
+		},
+		{
+			"label": "專業檢具",
+			"page": "inspection-tools",
+			"children": [
+				{
+					"title": "數顯式深度規",
+					"page": "penetration"
+				}
+			]
+		},
+		{
+			"label": "所有產品"
+		}
+	],
+	"image": {
+		"src": "/images/JeouYeun_scrow_draw.png",
+		"alt": "螺絲插圖"
+	},
+	"select": "選擇產品類型: "
+}

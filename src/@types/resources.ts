@@ -6,6 +6,7 @@ import homecore from '../locale/zhTW/homecore.json';
 import homeheader from '../locale/zhTW/homeheader.json';
 import homeservice from '../locale/zhTW/homeservice.json';
 import nav from '../locale/zhTW/nav.json';
+import product from '../locale/zhTW/product.json';
 
 const resources = {
   about,
@@ -15,7 +16,8 @@ const resources = {
   homecore,
   homeheader,
   homeservice,
-  nav
+  nav,
+  product
 } as const;
 
 export default resources;
