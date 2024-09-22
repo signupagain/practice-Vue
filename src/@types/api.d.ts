@@ -1,0 +1,3 @@
+interface ContactFormResponse {
+	feedback: string;
+}

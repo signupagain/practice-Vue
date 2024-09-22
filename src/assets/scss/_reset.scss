@@ -36,3 +36,16 @@ ol {
 figure {
 	margin: 0;
 }
+
+input,
+textarea {
+	margin: 0;
+	box-sizing: border-box;
+}
+
+button {
+	padding: 0;
+	border: none;
+	text-align: left;
+	font-family: inherit;
+}

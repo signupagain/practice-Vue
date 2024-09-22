@@ -6,6 +6,7 @@ import HomeHeader from "@/components/home/HomeHeader.vue";
 import HomeView from "@/views/home/HomeView.vue";
 import AboutView from "@/views/AboutView.vue";
 import ProductView from "@/views/ProductView.vue";
+import ContactUsView from "@/views/ContactUsView.vue";
 
 export const routes: RouteRecordRaw[] = [
 	{
@@ -31,17 +32,6 @@ export const routes: RouteRecordRaw[] = [
 	{
 		name: "product",
 		path: "/product/:page?",
-		meta: { title: "PRODUCTS", subtitle: "產品介紹" },
-		components: {
-			header: GlobalHeader,
-			default: ProductView,
-			footer: GlobalFooter,
-		},
-		props: { header: false, default: true, footer: false },
-	},
-	{
-		name: "detail",
-		path: "/products-detail/:page",
 		meta: { title: "PRODUCTS", subtitle: "產品介紹" },
 		components: {
 			header: GlobalHeader,
@@ -84,7 +74,11 @@ export const routes: RouteRecordRaw[] = [
 		name: "contact",
 		path: "/contact-us/:page?",
 		meta: { title: "CONTACT US", subtitle: "聯絡我們" },
-		components: { header: GlobalHeader, footer: GlobalFooter },
+		components: {
+			header: GlobalHeader,
+			default: ContactUsView,
+			footer: GlobalFooter,
+		},
 	},
 	{
 		name: "notfound",

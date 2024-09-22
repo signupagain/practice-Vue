@@ -1,6 +1,8 @@
 <template>
 	<a
+		v-if="name"
 		class="jy-a"
+		:class="$attrs.class"
 		href="/"
 		@click.prevent="router.push({ name, params: { page } })"
 	>
@@ -8,14 +10,20 @@
 			<div class="jy-a-text" v-text="t('button.anchor')"></div>
 		</div>
 	</a>
+	<button v-if="text" class="jy-a" :class="$attrs.class">
+		<div class="jy-a-border">
+			<div class="jy-a-text" v-text="text"></div>
+		</div>
+	</button>
 </template>
 <script setup lang="ts">
 	import { useTranslation } from "i18next-vue";
 	import { useRouter } from "vue-router";
 
 	defineProps<{
-		name: string;
-		page: string;
+		name?: string;
+		page?: string;
+		text?: string;
 	}>();
 	const router = useRouter();
 	const { t } = useTranslation("common");
@@ -45,12 +53,12 @@
 			}
 
 			@media (max-width: 1180px) {
-				background-color: $c-fff;
+				background-color: $c-4f6;
 			}
 		}
 
 		&-text {
-			margin: 1.1px 0.8px;
+			margin: 0.8px;
 			padding: 0 20px;
 			position: relative;
 
