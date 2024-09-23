@@ -1,6 +1,11 @@
 <template>
 	<div class="jy-nl" ref="curBtnWrap">
-		<span class="jy-nl-cur" ref="curBtn" v-text="t('lang.current')"></span>
+		<span
+			class="jy-nl-cur"
+			ref="curBtn"
+			v-text="t('lang.current')"
+			tabindex="0"
+		></span>
 		<ul class="jy-nl-ul" ref="curBtnControl">
 			<li
 				class="jy-nl-li"

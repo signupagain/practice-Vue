@@ -53,15 +53,25 @@ export function useToggleActive(
 		btnEl.value?.addEventListener("click", debounceToggleActive);
 		stopPropEl.value?.addEventListener("click", stopPropagation);
 		document.addEventListener("click", debounceInActiveEl);
+
+		btnEl.value?.addEventListener("keyup", debounceToggleActive);
+		stopPropEl.value?.addEventListener("keyup", stopPropagation);
+		document.addEventListener("keyup", debounceInActiveEl);
 	});
 
 	onUnmounted(() => {
 		btnEl.value?.removeEventListener("click", debounceToggleActive);
 		stopPropEl.value?.removeEventListener("click", stopPropagation);
 		document.removeEventListener("click", debounceInActiveEl);
+
+		btnEl.value?.removeEventListener("keyup", debounceToggleActive);
+		stopPropEl.value?.removeEventListener("keyup", stopPropagation);
+		document.removeEventListener("keyup", debounceInActiveEl);
 	});
 
 	function toggleActive(e: Event): void {
+		if (e instanceof KeyboardEvent && e.key !== "Enter") return;
+
 		const el = e.target as HTMLElement;
 		el.classList.contains("active")
 			? document
