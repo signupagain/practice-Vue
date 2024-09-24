@@ -7,6 +7,7 @@ import {
 	type Ref,
 } from "vue";
 import { debounce, type DebouncedFunc } from "lodash-es";
+import { onBeforeRouteUpdate, useRoute } from "vue-router";
 
 const useToggleTag = "data-usetoggle";
 const order = ref<Ref<HTMLElement | ComponentPublicInstance>[]>([]);
@@ -32,7 +33,7 @@ export function useToggleActive(
 	stopPropEl: Ref<HTMLElement | null>,
 	...controls: (Ref<HTMLElement | ComponentPublicInstance | null> | undefined)[]
 ) {
-	type debounceFunc = DebouncedFunc<(e: Event) => void>;
+	type debounceFunc = DebouncedFunc<(e?: Event) => void>;
 
 	let debounceToggleActive: debounceFunc | null = debounce(toggleActive, 100, {
 		trailing: true,
@@ -67,7 +68,16 @@ export function useToggleActive(
 		btnEl.value?.removeEventListener("keyup", debounceToggleActive);
 		stopPropEl.value?.removeEventListener("keyup", stopPropagation);
 		document.removeEventListener("keyup", debounceInActiveEl);
+
+		order.value.length = 0;
 	});
+
+	const route = useRoute();
+
+	watch(
+		() => route.path,
+		() => debounceInActiveEl()
+	);
 
 	function toggleActive(e: Event): void {
 		if (e instanceof KeyboardEvent && e.key !== "Enter") return;

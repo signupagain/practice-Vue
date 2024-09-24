@@ -5,6 +5,7 @@ import vue from "@vitejs/plugin-vue";
 import vueSetupExtend from "vite-plugin-vue-setup-extend";
 import autoprefixer from "autoprefixer";
 import nested from "postcss-nested";
+import vueDevTools from "vite-plugin-vue-devtools";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,6 +16,7 @@ export default defineConfig({
 			},
 		}),
 		vueSetupExtend(),
+		vueDevTools(),
 	],
 	css: {
 		preprocessorOptions: {

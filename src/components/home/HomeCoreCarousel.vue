@@ -77,6 +77,14 @@
 				const imgIndex = realIndex % diff;
 				const imgSwiper = imgul.value?.swiper as Swiper;
 				imgSwiper.slideTo(imgIndex, 0);
+
+				slides.forEach((el) => {
+					if (el.classList.contains("swiper-slide-next")) {
+						el.querySelector(".jy-pc-a")!.setAttribute("tabindex", "0");
+						return;
+					}
+					el.querySelector(".jy-pc-a")!.setAttribute("tabindex", "-1");
+				});
 			},
 		},
 	};
