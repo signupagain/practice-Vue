@@ -6,7 +6,8 @@ import I18NextVue from "i18next-vue";
 
 const i18nOption: InitOptions = {
 	debug: true,
-	lng: import.meta.env.DEFAULT_LOCALE ?? "zh-Hant-TW",
+	lng: import.meta.env.VITE_DEFAULT_LOCALE ?? "zh-Hant-TW",
+	fallbackLng: "zh-Hant-TW",
 	defaultNS: "common",
 	resources: {
 		"zh-Hant-TW": resources,

@@ -3,21 +3,22 @@
 		<span
 			class="jy-nl-cur"
 			ref="curBtn"
-			v-text="t('lang.current')"
+			v-text="t('lang.current.title')"
 			tabindex="0"
 		></span>
 		<ul class="jy-nl-ul" ref="curBtnControl">
 			<li
 				class="jy-nl-li"
-				v-for="(value, index) in t('lang.list', { returnObjects: true })"
+				v-for="{ key, value } in t('lang.list', { returnObjects: true })"
 				:key="value"
 			>
 				<a
-					href="javascript:console.log('觸發TelePort')//尚不提供多種語言;"
+					href="/"
 					class="jy-nl-a"
-					:class="{ active: index === t('lang.index') }"
+					:class="{ active: value === t('lang.current.value') }"
+					@click.prevent="changeLang(value)"
 				>
-					<span class="jy-nl-span">{{ value }}</span>
+					<span class="jy-nl-span" v-text="key"></span>
 				</a>
 			</li>
 		</ul>
@@ -28,7 +29,14 @@
 	import { useTranslation } from "i18next-vue";
 	import { ref } from "vue";
 
-	const { t } = useTranslation("nav");
+	const { t, i18next } = useTranslation("nav");
+	function changeLang(lang: string) {
+		if (t("lang.current.value") !== lang)
+			i18next.changeLanguage(lang, () =>
+				console.log("觸發TelePort，尚不提供多種語言")
+			);
+	}
+
 	const curBtn = ref(null);
 	const curBtnWrap = ref(null);
 	const curBtnControl = ref(null);

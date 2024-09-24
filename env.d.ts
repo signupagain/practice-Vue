@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-	readonly DEFAULT_LOCALE: string;
+	readonly VITE_DEFAULT_LOCALE: string;
 }
 
 interface ImportMeta {

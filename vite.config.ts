@@ -36,5 +36,4 @@ export default defineConfig({
 			"@scss": fileURLToPath(new URL("./src/assets/scss", import.meta.url)),
 		},
 	},
-	envDir: fileURLToPath(new URL("./src/env", import.meta.url)),
 });

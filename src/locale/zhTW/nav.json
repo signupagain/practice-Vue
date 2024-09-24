@@ -27,8 +27,10 @@
 		{ "label": "聯絡我們", "name": "contact", "children": [] }
 	],
 	"lang": {
-		"current": "繁中",
-		"index": 0,
-		"list": ["繁", "EN"]
+		"current": { "title": "繁中", "value": "zh-Hant-TW" },
+		"list": [
+			{ "key": "繁", "value": "zh-Hant-TW" },
+			{ "key": "EN", "value": "en" }
+		]
 	}
 }
