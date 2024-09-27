@@ -1,8 +1,7 @@
 <template>
 	<div class="jy-hcu">
-		<div class="jy-hcu-x">
+		<div class="jy-hcu-x from">
 			<HomeHeading
-				class="jy-hhg"
 				title-tag="h2"
 				:word1="t('title.word1')"
 				:word2="t('title.word2')"
@@ -11,10 +10,10 @@
 					<p :class="slotWith" v-text="t('subtitle')"></p>
 				</template>
 			</HomeHeading>
-			<GlobalAnchor name="contact" page="" />
+			<GlobalAnchor class="from" name="contact" page="" />
 		</div>
 		<img
-			class="jy-hcu-img"
+			class="jy-hcu-img from"
 			v-bind="t('images.building', { returnObjects: true })"
 		/>
 	</div>
@@ -22,8 +21,10 @@
 <script setup lang="ts">
 	import GlobalAnchor from "@/components/global/GlobalAnchor.vue";
 	import HomeHeading from "@/components/home/HomeHeading.vue";
+	import { useProvideSubscribeFrom } from "@/use/useProvideSubscribeFrom";
 	import { useTranslation } from "i18next-vue";
 	const { t } = useTranslation("homecontact");
+	useProvideSubscribeFrom();
 </script>
 <style lang="scss">
 	.jy-hcu {
@@ -45,7 +46,16 @@
 			flex-flow: column;
 			gap: 30px;
 			position: absolute;
+			z-index: 2;
 			right: calc(10% - 20px);
+			opacity: 1;
+			transform: translateY(0);
+			transition: 0.6s 0.3s linear;
+
+			&.from {
+				opacity: 0;
+				transform: translateY(10%);
+			}
 
 			@media (max-width: 1180px) {
 				position: static;
@@ -67,13 +77,33 @@
 				}
 			}
 
-			& .jy-a-border {
-				background: $c-4f6;
+			& .jy-a {
+				opacity: 1;
+				transform: translateY(0);
+				transition: 0.6s 0.4s linear;
+
+				&.from {
+					opacity: 0;
+					transform: translateY(10%);
+				}
+
+				&-border {
+					background: $c-4f6;
+				}
 			}
 		}
 
 		&-img {
 			width: 100%;
+			aspect-ratio: 2.3 / 1;
+			opacity: 1;
+			transform: translateY(0);
+			transition: 0.6s 0.5s linear;
+
+			&.from {
+				opacity: 0;
+				transform: translateY(10%);
+			}
 		}
 	}
 </style>

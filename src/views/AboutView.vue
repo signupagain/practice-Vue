@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-	import AboutMain from "@/components/about/AboutMain.vue";
+	import AboutMain from "@/components/AboutMain.vue";
 	import { useMaxWidth } from "@/use/useMaxWidth";
 	import { useTranslation } from "i18next-vue";
 	import { computed, ref, watch } from "vue";

@@ -11,6 +11,7 @@
 				<a
 					href="/"
 					class="jy-nav-m-a"
+					:class="{ active: $route.meta.subtitle === label }"
 					@click.prevent="router.push({ name, params: { page: page ?? '' } })"
 					v-text="label"
 				></a>
@@ -126,7 +127,7 @@
 				margin: -3px calc(50% - 15px) 0;
 			}
 
-			&-a:hover ~ &__line {
+			:is(&-a.active, &-a:hover) ~ &__line {
 				transform: scaleX(1);
 			}
 		}

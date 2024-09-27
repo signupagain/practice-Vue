@@ -1,9 +1,9 @@
 <template>
-	<div class="jy-hab">
+	<div class="jy-hab from">
 		<div class="jy-hab-x__left">
 			<HomeHeading
-				class="jy-hhg"
 				title-tag="h2"
+				:id="'about'"
 				:word1="t('title.word1')"
 				:word2="t('title.word2')"
 				color
@@ -22,10 +22,10 @@
 				</template>
 			</HomeHeading>
 			<template v-for="p of t('paragraph', { returnObjects: true })">
-				<p class="jy-hab-p" v-text="p"></p>
+				<p class="jy-hab-p from" v-text="p"></p>
 			</template>
-			<GlobalAnchor class="jy-a" name="about" page="who-we-are" />
-			<HomeAboutAside class="jy-hab-aside" />
+			<GlobalAnchor class="from" name="about" page="who-we-are" />
+			<HomeAboutAside class="from" />
 			<img
 				class="jy-hab-logo"
 				v-bind="t('images.logo', { returnObjects: true })"
@@ -33,7 +33,7 @@
 		</div>
 		<div class="jy-hab-x__right">
 			<img
-				class="jy-hab-img"
+				class="jy-hab-img from"
 				v-bind="t('images.passion', { returnObjects: true })"
 			/>
 		</div>
@@ -44,8 +44,10 @@
 	import HomeAboutAside from "@/components/home/HomeAboutAside.vue";
 	import { useTranslation } from "i18next-vue";
 	import GlobalAnchor from "@/components/global/GlobalAnchor.vue";
+	import { useProvideSubscribeFrom } from "@/use/useProvideSubscribeFrom";
 
 	const { t } = useTranslation("homeabout");
+	useProvideSubscribeFrom();
 </script>
 <style lang="scss">
 	.jy-hab {
@@ -68,10 +70,18 @@
 			width: 1170px;
 			height: 232px;
 			background: url("@img/about_bg.png") center / contain no-repeat;
+			opacity: 1;
+			transform: translateX(0);
+			transition: 1s 0.3s linear;
 
 			@media (max-width: 1180px) {
 				content: none;
 			}
+		}
+
+		&.from::after {
+			opacity: 0;
+			transform: translateX(-100%);
 		}
 
 		&-x {
@@ -107,6 +117,14 @@
 			font-size: $fs-15;
 			line-height: 1.6;
 			letter-spacing: 0.75px;
+			opacity: 1;
+			transform: translateY(0);
+			transition: 0.6s 0.85s linear;
+
+			&.from {
+				opacity: 0;
+				transform: translateY(10px);
+			}
 
 			& + & {
 				margin-top: -30px;
@@ -116,6 +134,14 @@
 				margin-top: 20px;
 				position: relative;
 				z-index: 2;
+				opacity: 1;
+				transform: translateY(0);
+				transition: 0.6s 0.95s linear;
+
+				&.from {
+					opacity: 0;
+					transform: translateY(10px);
+				}
 			}
 		}
 
@@ -128,6 +154,14 @@
 			width: 790px;
 			background: $c-fff;
 			border-radius: $radius;
+			opacity: 1;
+			transform: translateY(0);
+			transition: 0.6s 0.75s linear;
+
+			&.from {
+				opacity: 0;
+				transform: translateY(10px);
+			}
 
 			@media (max-width: 1180px) {
 				width: unset;
@@ -150,6 +184,7 @@
 			width: 252px;
 			height: 252px;
 			position: absolute;
+			z-index: 1;
 			inset: 0;
 			margin: auto;
 			margin-right: -26.8%;
@@ -166,6 +201,14 @@
 		&-img {
 			width: 100%;
 			border-radius: $radius 0 0 $radius;
+			opacity: 1;
+			transform: translateY(0);
+			transition: 0.8s 0.3s linear;
+
+			&.from {
+				opacity: 0;
+				transform: translateY(10px);
+			}
 
 			@media (max-width: 1180px) {
 				width: 95%;

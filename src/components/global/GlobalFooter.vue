@@ -1,9 +1,9 @@
 <template>
 	<footer class="jy-footer">
 		<div class="jy-footer-x">
-			<GlobalLogo class="jy-logo" />
-			<GlobalInfo class="jy-info" />
-			<ul class="jy-footer-ul">
+			<GlobalLogo class="from" />
+			<GlobalInfo class="from" />
+			<ul class="jy-footer-ul from">
 				<li
 					class="jy-footer-li"
 					v-for="{ label, name, page } of t('menu', {
@@ -18,9 +18,9 @@
 					></a>
 				</li>
 			</ul>
-			<GlobalFollow class="jy-follow" />
+			<GlobalFollow class="from" />
 		</div>
-		<GlobalCopyright class="jy-copyright" />
+		<GlobalCopyright class="from" />
 	</footer>
 </template>
 <script setup lang="ts">
@@ -30,9 +30,11 @@
 	import GlobalInfo from "./GlobalInfo.vue";
 	import GlobalLogo from "./GlobalLogo.vue";
 	import { useRouter } from "vue-router";
+	import { useProvideSubscribeFrom } from "@/use/useProvideSubscribeFrom";
 
 	const { t } = useTranslation("nav");
 	const router = useRouter();
+	useProvideSubscribeFrom();
 </script>
 <style lang="scss">
 	.jy-footer {
@@ -49,9 +51,38 @@
 				place-items: center;
 			}
 
+			& .jy-logo {
+				opacity: 1;
+				transform: translateY(0);
+				transition: 0.6s 0.3s linear;
+
+				&.from {
+					opacity: 0;
+					transform: translateY(50%);
+				}
+			}
+
+			& .jy-info {
+				opacity: 1;
+				transform: translateY(0);
+				transition: 0.6s 0.4s linear;
+
+				&.from {
+					opacity: 0;
+					transform: translateY(50%);
+				}
+			}
+
 			& .jy-follow {
 				place-self: end;
 				margin: 0 30px;
+				opacity: 1;
+				transform: translateY(0);
+				transition: 0.6s 0.4s linear;
+				&.from {
+					opacity: 0;
+					transform: translateY(50%);
+				}
 
 				@media (max-width: 1284px) {
 					place-self: center;
@@ -61,6 +92,13 @@
 
 		&-ul {
 			place-self: center end;
+			opacity: 1;
+			transform: translateY(0);
+			transition: 0.6s 0.35s linear;
+			&.from {
+				opacity: 0;
+				transform: translateY(50%);
+			}
 
 			@media (max-width: 1284px) {
 				place-self: center;
@@ -95,6 +133,13 @@
 
 		& .jy-copyright {
 			justify-content: center;
+			opacity: 1;
+			transform: translateY(0);
+			transition: 0.6s 0.5s linear;
+			&.from {
+				opacity: 0;
+				transform: translateY(25%);
+			}
 		}
 	}
 </style>

@@ -1,5 +1,5 @@
 <template>
-	<swiper-container class="jy-pc-txt-ul" ref="txtul" init="false">
+	<swiper-container class="jy-pc-txt-ul from" ref="txtul" init="false">
 		<swiper-slide
 			class="jy-pc-txt-li"
 			v-for="{ title, subtitle, page, paragraph } of doubleFigures"
@@ -17,7 +17,7 @@
 			</a>
 		</swiper-slide>
 	</swiper-container>
-	<div class="jy-pc-x">
+	<div class="jy-pc-x from">
 		<swiper-container class="jy-pc-img-ul" ref="imgul" init="false">
 			<swiper-slide class="jy-pc-img-li" v-for="{ images } of figures">
 				<img class="jy-pc-img" v-bind="images.bg" />
@@ -32,6 +32,7 @@
 	</div>
 </template>
 <script setup lang="ts">
+	import { useProvideSubscribeFrom } from "@/use/useProvideSubscribeFrom";
 	import { useTranslation } from "i18next-vue";
 	import type { SwiperContainer } from "swiper/element";
 	import { Autoplay, Navigation } from "swiper/modules";
@@ -48,14 +49,10 @@
 			.reduce((p, c) => [...p, ...c])
 	);
 	const router = useRouter();
-
 	const imgul = ref<SwiperContainer | null>(null);
 	const txtul = ref<SwiperContainer | null>(null);
-	const imgulOption: SwiperOptions = {
-		slidesPerView: 1,
-	};
 	const txtulOption: SwiperOptions = {
-		...imgulOption,
+		slidesPerView: 1,
 		loop: true,
 		centeredSlides: true,
 		breakpoints: {
@@ -88,7 +85,6 @@
 			},
 		},
 	};
-
 	onMounted(() => {
 		if (txtul.value) {
 			Object.assign(txtul.value, txtulOption);
@@ -96,10 +92,12 @@
 		}
 
 		if (imgul.value) {
-			Object.assign(imgul.value, imgulOption);
+			Object.assign(imgul.value, { slidesPerView: 1 });
 			imgul.value.initialize();
 		}
 	});
+
+	useProvideSubscribeFrom();
 </script>
 <style lang="scss">
 	.jy-pc {
@@ -107,6 +105,12 @@
 			&-ul {
 				height: inherit;
 				text-align: center;
+				opacity: 1;
+				transition: 0.6s 0.5s linear;
+
+				&.from {
+					opacity: 0;
+				}
 			}
 
 			&-li.swiper-slide-active {
@@ -168,6 +172,12 @@
 		&-x {
 			position: relative;
 			top: -100%;
+			opacity: 1;
+			transition: 0.6s 0.5s linear;
+
+			&.from {
+				opacity: 0;
+			}
 		}
 
 		&-img {

@@ -7,26 +7,7 @@ import {
 	type Ref,
 } from "vue";
 import { debounce, type DebouncedFunc } from "lodash-es";
-import { onBeforeRouteUpdate, useRoute } from "vue-router";
-
-const useToggleTag = "data-usetoggle";
-const order = ref<Ref<HTMLElement | ComponentPublicInstance>[]>([]);
-
-watch(order, (newVal) => {
-	newVal.forEach((activeEl) =>
-		activeEl.value instanceof HTMLElement
-			? activeEl.value.classList.toggle("active", true)
-			: activeEl.value.$el.classList.toggle("active", true)
-	);
-
-	document.querySelectorAll(`[${useToggleTag}].active`).forEach((activeEl) => {
-		const hasActiveEl = newVal
-			.map((v) => (v.value instanceof HTMLElement ? v.value : v.value.$el))
-			.includes(activeEl);
-
-		if (!hasActiveEl) activeEl.classList.toggle("active", false);
-	});
-});
+import { useRoute } from "vue-router";
 
 export function useToggleActive(
 	btnEl: Ref<HTMLElement | null>,
@@ -55,9 +36,9 @@ export function useToggleActive(
 		stopPropEl.value?.addEventListener("click", stopPropagation);
 		document.addEventListener("click", debounceInActiveEl);
 
-		btnEl.value?.addEventListener("keyup", debounceToggleActive);
-		stopPropEl.value?.addEventListener("keyup", stopPropagation);
-		document.addEventListener("keyup", debounceInActiveEl);
+		btnEl.value?.addEventListener("keydown", debounceToggleActive);
+		stopPropEl.value?.addEventListener("keydown", stopPropagation);
+		document.addEventListener("keydown", debounceInActiveEl);
 	});
 
 	onUnmounted(() => {
@@ -65,11 +46,36 @@ export function useToggleActive(
 		stopPropEl.value?.removeEventListener("click", stopPropagation);
 		document.removeEventListener("click", debounceInActiveEl);
 
-		btnEl.value?.removeEventListener("keyup", debounceToggleActive);
-		stopPropEl.value?.removeEventListener("keyup", stopPropagation);
-		document.removeEventListener("keyup", debounceInActiveEl);
+		btnEl.value?.removeEventListener("keydown", debounceToggleActive);
+		stopPropEl.value?.removeEventListener("keydown", stopPropagation);
+		document.removeEventListener("keydown", debounceInActiveEl);
+	});
 
-		order.value.length = 0;
+	const useToggleTag = "data-usetoggle";
+	const order = ref<Ref<HTMLElement | ComponentPublicInstance>[]>([]);
+
+	watch(order, (newVal) => {
+		if (newVal.length !== 0) {
+			newVal.forEach((activeEl) =>
+				activeEl.value instanceof HTMLElement
+					? activeEl.value.classList.add("active")
+					: activeEl.value.$el.classList.add("active")
+			);
+
+			document
+				.querySelectorAll(`[${useToggleTag}].active`)
+				.forEach((activeEl) => {
+					const hasActiveEl = newVal
+						.map((v) =>
+							v.value instanceof HTMLElement ? v.value : v.value.$el
+						)
+						.includes(activeEl);
+
+					if (!hasActiveEl) activeEl.classList.remove("active");
+				});
+
+			order.value.length = 0;
+		}
 	});
 
 	const route = useRoute();
@@ -86,7 +92,7 @@ export function useToggleActive(
 		el.classList.contains("active")
 			? document
 					.querySelectorAll(`[${useToggleTag}].active`)
-					.forEach((activeEl) => activeEl.classList.toggle("active", false))
+					.forEach((activeEl) => activeEl.classList.remove("active"))
 			: (order.value = [btnEl, ...controls] as Ref<
 					HTMLElement | ComponentPublicInstance
 			  >[]);
@@ -94,12 +100,12 @@ export function useToggleActive(
 
 	function inActiveEl() {
 		if (btnEl.value?.classList.contains("active")) {
-			btnEl.value?.classList.toggle("active", false);
+			btnEl.value?.classList.remove("active");
 
 			controls.forEach((el) =>
 				el?.value instanceof HTMLElement
-					? el?.value.classList.toggle("active", false)
-					: el?.value?.$el.classList.toggle("active", false)
+					? el?.value.classList.remove("active")
+					: el?.value?.$el.classList.remove("active")
 			);
 		}
 	}

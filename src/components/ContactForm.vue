@@ -120,7 +120,6 @@
 
 		if (el.checkValidity && el.checkValidity()) {
 			const formData = new FormData(el);
-			console.log(typeof formData);
 			const result = await contactFormRequest(formData);
 			console.log(`trigger Teleport and send ${JSON.stringify(result.data)}`);
 		}

@@ -1,7 +1,6 @@
 <template>
 	<div class="jy-hc">
 		<HomeHeading
-			class="jy-hhg"
 			title-tag="h2"
 			:word1="t('title.word1')"
 			:word2="t('title.word2')"

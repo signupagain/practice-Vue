@@ -62,7 +62,7 @@
 	import { useTranslation } from "i18next-vue";
 	import { computed, reactive, ref, watch } from "vue";
 	import { useRouter } from "vue-router";
-	import GlobalCard from "../global/GlobalCard.vue";
+	import GlobalCard from "./global/GlobalCard.vue";
 
 	const { curPage } = defineProps<{ curPage: string }>();
 	const router = useRouter();

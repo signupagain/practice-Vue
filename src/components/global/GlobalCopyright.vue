@@ -1,5 +1,5 @@
 <template>
-	<p class="jy-copyright">
+	<p class="jy-copyright from" ref="copyright">
 		{{ t("copyright.text", { year: new Date().getFullYear() }) }}
 		<a
 			href="javascript:console.log('GlobalCopyright觸發Teleport')//練習用網站;"
@@ -10,8 +10,17 @@
 </template>
 <script setup lang="ts">
 	import { useTranslation } from "i18next-vue";
+	import { onMounted, ref } from "vue";
 
+	const { fn } = defineProps<{
+		fn?: nestedFromsSubscribe;
+	}>();
 	const { t } = useTranslation("common");
+	const copyright = ref<Element | null>(null);
+	if (fn)
+		onMounted(() => {
+			if (copyright.value) fn([copyright.value]);
+		});
 </script>
 <style lang="scss">
 	.jy-copyright {
@@ -21,5 +30,13 @@
 		margin: 20px 0;
 		display: flex;
 		gap: 5px;
+		opacity: 1;
+		transform: translateY(0);
+		transition: 0.7s 1.5s ease-in-out;
+
+		&.from {
+			opacity: 0;
+			transform: translateY(-10px);
+		}
 	}
 </style>

@@ -51,6 +51,7 @@
 
 			&-img {
 				width: 100%;
+				height: 688px;
 				animation: bigger 5s linear forwards;
 
 				@media (max-width: 1180px) {
@@ -177,8 +178,9 @@
 				}
 
 				&__line {
-					border-top: 1.2px solid;
-					color: $c-ccc80;
+					width: 0;
+					height: 1.2px;
+					background: $c-ccc80;
 				}
 
 				&__logo {
@@ -232,20 +234,20 @@
 					fadeIn 0.8s ease-in-out forwards;
 			}
 
+			&-deco__line {
+				animation: strechWidth 1s linear forwards;
+			}
+
 			&-sub {
-				animation-delay: 0.4s, 0.4s;
+				animation-delay: 0.4s;
 			}
 
 			&-descr {
-				animation-delay: 0.8s, 0.8s;
+				animation-delay: 0.8s;
 			}
 
 			&-hg .jy-a {
-				animation-delay: 1.2s, 1.2s;
-			}
-
-			&-deco-line {
-				animation: strechWidth 1s linear forwards;
+				animation-delay: 1.2s;
 			}
 		}
 	}

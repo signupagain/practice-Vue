@@ -2,7 +2,6 @@
 	<article class="jy-hs">
 		<div class="jy-hs-head">
 			<HomeHeading
-				class="jy-hhg"
 				title-tag="h2"
 				:word1="t('title.word1')"
 				:word2="t('title.word2')"
@@ -15,14 +14,14 @@
 					<p :class="slotWith" v-text="t('description')"></p>
 				</template>
 			</HomeHeading>
-			<GlobalAnchor class="jy-a" name="about" page="technology" />
+			<GlobalAnchor class="from" name="about" page="technology" />
 		</div>
-		<section class="jy-hs-section">
+		<section class="jy-hs-section from">
 			<swiper-container class="jy-hs-ul" ref="ul" init="false">
 				<swiper-slide
 					class="jy-hs-li"
 					v-for="detail of t('list', { returnObjects: true })"
-					><GlobalCard class="jy-card" v-bind="detail" />
+					><GlobalCard v-bind="detail" />
 				</swiper-slide>
 			</swiper-container>
 			<div class="jy-hs-btn__wrap">
@@ -40,6 +39,7 @@
 	import GlobalAnchor from "@/components/global/GlobalAnchor.vue";
 	import GlobalCard from "@/components/global/GlobalCard.vue";
 	import HomeHeading from "@/components/home/HomeHeading.vue";
+	import { useProvideSubscribeFrom } from "@/use/useProvideSubscribeFrom";
 	import { useTranslation } from "i18next-vue";
 	import type { SwiperContainer } from "swiper/element";
 	import { Navigation } from "swiper/modules";
@@ -80,6 +80,7 @@
 			ul.value.initialize();
 		}
 	});
+	useProvideSubscribeFrom();
 </script>
 <style lang="scss">
 	.jy-hs {
@@ -98,6 +99,19 @@
 			align-items: start;
 			gap: 77px;
 
+			& .jy-a {
+				margin-top: 3px;
+
+				transition: 0.6s 0.6s linear;
+				opacity: 1;
+				transform: translateY(0);
+
+				&.from {
+					opacity: 0;
+					transform: translateY(100%);
+				}
+			}
+
 			@media (max-width: 1180px) {
 				display: block;
 
@@ -111,6 +125,15 @@
 			position: relative;
 			width: 110%;
 			left: -5%;
+			transition: 0.6s 0.6s linear;
+			opacity: 1;
+			transform: translateY(0);
+
+			&.from {
+				opacity: 0;
+				transform: translateY(15%);
+			}
+
 			@media (max-width: 1180px) {
 				width: auto;
 				position: static;
@@ -154,11 +177,12 @@
 				position: absolute;
 				z-index: 1;
 				top: 35%;
-				right: 3%;
+				right: 3.5%;
 				height: 150px;
 				display: flex;
 				flex-flow: column-reverse;
 				justify-content: space-between;
+
 				@media (max-width: 1180px) {
 					position: static;
 					height: auto;
@@ -177,6 +201,15 @@
 				border: none;
 				border-radius: 50%;
 				cursor: pointer;
+
+				transition: 0.6s 0.6s linear;
+				opacity: 1;
+				transform: translateY(0);
+
+				&.from {
+					opacity: 0;
+					transform: translateY(100%);
+				}
 			}
 
 			&::after {

@@ -57,7 +57,7 @@
 </template>
 
 <script setup lang="ts">
-	import ProductMain from "@/components/product/ProductMain.vue";
+	import ProductMain from "@/components/ProductMain.vue";
 	import { useMaxWidth } from "@/use/useMaxWidth";
 	import { useTranslation } from "i18next-vue";
 	import { computed, ref } from "vue";

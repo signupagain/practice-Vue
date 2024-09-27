@@ -1,8 +1,8 @@
 <template>
-	<HomeAbout class="jy-ha" />
-	<HomeCore class="jy-hc" />
-	<HomeService class="jy-hs" />
-	<HomeContactUs class="jy-hcu" />
+	<HomeAbout />
+	<HomeCore />
+	<HomeService />
+	<HomeContactUs />
 </template>
 <script setup lang="ts">
 	import HomeAbout from "./HomeAbout.vue";
