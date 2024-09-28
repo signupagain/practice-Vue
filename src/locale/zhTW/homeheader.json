@@ -8,8 +8,8 @@
 	"images": {
 		"bg": {
 			"alt": "久允螺絲專業製造",
-			"pc": { "src": "/images/JeouYeun_focus.jpg" },
-			"mb": { "src": "/images/JeouYeun_focus_mb.jpg" }
+			"pc": { "src": "/images/JeouYeun_focus.webp" },
+			"mb": { "src": "/images/JeouYeun_focus_mb.webp" }
 		}
 	},
 	"link": "SCROLL DOWN"

@@ -64,7 +64,7 @@
 		}
 	],
 	"image": {
-		"src": "/images/JeouYeun_scrow_draw.png",
+		"src": "/images/JeouYeun_scrow_draw.webp",
 		"alt": "螺絲插圖"
 	},
 	"select": "選擇產品類型: "

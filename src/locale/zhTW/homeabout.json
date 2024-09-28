@@ -14,8 +14,8 @@
 		"並以「為客戶解決問題」為服務宗旨與自我要求，以技術克服成本與品質的矛盾，擁有少量多樣的客製化生產競爭優勢，以專業為客戶找到最佳製造方案。"
 	],
 	"images": {
-		"logo": { "alt": "久允商標", "src": "/images/JeouYeun_logo_ab.png" },
-		"passion": { "alt": "熱愛技術", "src": "/images/JeouYeun_passion.jpg" }
+		"logo": { "alt": "久允商標", "src": "/images/JeouYeun_logo_ab.webp" },
+		"passion": { "alt": "熱愛技術", "src": "/images/JeouYeun_passion.webp" }
 	},
 	"list": ["規格螺絲製造銷售", "螺絲檢具製造銷售", "客製化螺絲製造"]
 }
