@@ -2,7 +2,7 @@
 	<swiper-container class="jy-pc-txt-ul from" ref="txtul" init="false">
 		<swiper-slide
 			class="jy-pc-txt-li"
-			v-for="{ title, subtitle, page, paragraph } of doubleFigures"
+			v-for="{ title, subtitle, page, paragraph } of figures.concat(figures)"
 		>
 			<a
 				href="/"
@@ -37,17 +37,12 @@
 	import type { SwiperContainer } from "swiper/element";
 	import { Autoplay, Navigation } from "swiper/modules";
 	import type { Swiper, SwiperOptions } from "swiper/types";
-	import { computed, onMounted, ref } from "vue";
+	import { onMounted, ref } from "vue";
 	import { useRouter } from "vue-router";
 
 	const { t: $t } = useTranslation("common");
 	const { t } = useTranslation("homecore");
 	const figures = t("list", { returnObjects: true });
-	const doubleFigures = computed(() =>
-		Array(2)
-			.fill(figures)
-			.reduce((p, c) => [...p, ...c])
-	);
 	const router = useRouter();
 	const imgul = ref<SwiperContainer | null>(null);
 	const txtul = ref<SwiperContainer | null>(null);

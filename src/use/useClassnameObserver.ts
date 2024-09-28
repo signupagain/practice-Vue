@@ -2,7 +2,7 @@ import { onMounted, onUnmounted } from "vue";
 
 export function useClassnameObserver(
 	classname: string,
-	threshold: number = 0.25
+	threshold: number = 0.1
 ) {
 	const callback: IntersectionObserverCallback = (entries, observer) => {
 		entries.forEach((v) => {
