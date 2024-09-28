@@ -8,6 +8,7 @@ import AboutView from "@/views/AboutView.vue";
 import ProductView from "@/views/ProductView.vue";
 import ContactUsView from "@/views/ContactUsView.vue";
 import NotFoundView from "@/views/NotFoundView.vue";
+import { useTranslation } from "i18next-vue";
 
 export const routes: RouteRecordRaw[] = [
 	{
@@ -17,6 +18,9 @@ export const routes: RouteRecordRaw[] = [
 			header: HomeHeader,
 			default: HomeView,
 			footer: GlobalFooter,
+		},
+		beforeEnter: () => {
+			document.title = import.meta.env.VITE_COMPANY_NAME;
 		},
 	},
 	{
@@ -40,6 +44,11 @@ export const routes: RouteRecordRaw[] = [
 			footer: GlobalFooter,
 		},
 		props: { header: false, default: true, footer: false },
+		beforeEnter: (to) => {
+			document.title = `${to.meta.subtitle}-${
+				import.meta.env.VITE_COMPANY_NAME
+			}`;
+		},
 	},
 	{
 		name: "know",
@@ -48,6 +57,11 @@ export const routes: RouteRecordRaw[] = [
 		components: {
 			header: GlobalHeader,
 			footer: GlobalFooter,
+		},
+		beforeEnter: (to) => {
+			document.title = `${to.meta.subtitle}-${
+				import.meta.env.VITE_COMPANY_NAME
+			}`;
 		},
 	},
 	{
@@ -58,6 +72,11 @@ export const routes: RouteRecordRaw[] = [
 			header: GlobalHeader,
 			footer: GlobalFooter,
 		},
+		beforeEnter: (to) => {
+			document.title = `${to.meta.subtitle}-${
+				import.meta.env.VITE_COMPANY_NAME
+			}`;
+		},
 	},
 	{
 		name: "latest",
@@ -66,6 +85,11 @@ export const routes: RouteRecordRaw[] = [
 		components: {
 			header: GlobalHeader,
 			footer: GlobalFooter,
+		},
+		beforeEnter: (to) => {
+			document.title = `${to.meta.subtitle}-${
+				import.meta.env.VITE_COMPANY_NAME
+			}`;
 		},
 	},
 	{
@@ -77,6 +101,11 @@ export const routes: RouteRecordRaw[] = [
 			default: ContactUsView,
 			footer: GlobalFooter,
 		},
+		beforeEnter: (to) => {
+			document.title = `${to.meta.subtitle}-${
+				import.meta.env.VITE_COMPANY_NAME
+			}`;
+		},
 	},
 	{
 		name: "notfound",
@@ -85,6 +114,12 @@ export const routes: RouteRecordRaw[] = [
 			header: GlobalHeader,
 			default: NotFoundView,
 			footer: GlobalFooter,
+		},
+		beforeEnter: () => {
+			const { t } = useTranslation("common");
+			document.title = `${t("copyright.personal")}-${
+				import.meta.env.VITE_COMPANY_NAME
+			}`;
 		},
 	},
 ];

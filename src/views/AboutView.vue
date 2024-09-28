@@ -67,6 +67,14 @@
 	onBeforeRouteUpdate(() => {
 		isUlActive.value = false;
 	});
+	watch(
+		() => curPage,
+		(newVal) => {
+			const curThemeTitle = contents.find((el) => el.page === newVal)?.title;
+			document.title = `${curThemeTitle}-${import.meta.env.VITE_COMPANY_NAME}`;
+		},
+		{ immediate: true }
+	);
 </script>
 
 <style lang="scss">
