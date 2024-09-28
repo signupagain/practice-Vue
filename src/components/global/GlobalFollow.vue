@@ -8,9 +8,7 @@
 					returnObjects: true,
 				})"
 			>
-				<a
-					href="javascript:console.log('GlobalFollow觸發Teleport')"
-					class="jy-follow-a"
+				<a href="/" class="jy-follow-a" @click.prevent
 					><img :src :alt class="jy-follow-img"
 				/></a>
 			</li>
@@ -22,7 +20,7 @@
 	import { onMounted, ref } from "vue";
 
 	const { fn } = defineProps<{
-		fn?: nestedFromsSubscribe;
+		fn?: nestedFrom;
 	}>();
 	const follow = ref<Element | null>(null);
 	const { t } = useTranslation("common");

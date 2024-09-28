@@ -121,7 +121,7 @@
 		if (el.checkValidity && el.checkValidity()) {
 			const formData = new FormData(el);
 			const result = await contactFormRequest(formData);
-			console.log(`trigger Teleport and send ${JSON.stringify(result.data)}`);
+			alert(result.data.feedback);
 		}
 	}
 </script>

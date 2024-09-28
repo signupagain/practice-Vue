@@ -31,6 +31,7 @@
 		"list": [
 			{ "key": "繁", "value": "zh-Hant-TW" },
 			{ "key": "EN", "value": "en" }
-		]
+		],
+		"error": "尚無該語言"
 	}
 }

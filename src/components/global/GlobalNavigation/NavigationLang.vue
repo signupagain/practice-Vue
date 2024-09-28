@@ -16,9 +16,9 @@
 					href="/"
 					class="jy-nl-a"
 					:class="{ active: value === t('lang.current.value') }"
-					@click.prevent="changeLang(value)"
+					@click.prevent="!error ? changeLang($event, value) : null"
+					v-text="key"
 				>
-					<span class="jy-nl-span" v-text="key"></span>
 				</a>
 			</li>
 		</ul>
@@ -30,11 +30,23 @@
 	import { ref } from "vue";
 
 	const { t, i18next } = useTranslation("nav");
-	function changeLang(lang: string) {
-		if (t("lang.current.value") !== lang)
-			i18next.changeLanguage(lang, () =>
-				console.log("觸發TelePort，尚不提供多種語言")
-			);
+	const error = ref(false);
+	function changeLang(event: Event, lang: string) {
+		if (t("lang.current.value") !== lang) {
+			const el = event.target;
+			let string: string;
+			if (el instanceof HTMLElement) {
+				string = el.innerText;
+				i18next.changeLanguage(lang, () => {
+					error.value = true;
+					el.innerText = t("lang.error");
+					setTimeout(() => {
+						error.value = false;
+						el.innerText = string;
+					}, 1500);
+				});
+			}
+		}
 	}
 
 	const curBtn = ref(null);

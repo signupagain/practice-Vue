@@ -4,7 +4,7 @@
 		class="jy-logo"
 		:class="{ active: isH1 }"
 		:title="t('company')"
-		@click="router.push({ name: 'home' })"
+		@click.prevent="router.push({ name: 'home' })"
 	>
 		<img
 			class="jy-logo-img"

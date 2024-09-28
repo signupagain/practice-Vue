@@ -1,10 +1,7 @@
 <template>
 	<p class="jy-copyright from" ref="copyright">
 		{{ t("copyright.text", { year: new Date().getFullYear() }) }}
-		<a
-			href="javascript:console.log('GlobalCopyright觸發Teleport')//練習用網站;"
-			v-text="t('copyright.designBy')"
-		></a>
+		<a href="/" @click.prevent v-text="t('copyright.designBy')"></a>
 		{{ t("copyright.personal") }}
 	</p>
 </template>
@@ -13,7 +10,7 @@
 	import { onMounted, ref } from "vue";
 
 	const { fn } = defineProps<{
-		fn?: nestedFromsSubscribe;
+		fn?: nestedFrom;
 	}>();
 	const { t } = useTranslation("common");
 	const copyright = ref<Element | null>(null);

@@ -1,7 +1,5 @@
 import { inject, onMounted, onUnmounted } from "vue";
 
-type subscribeFrom = (targets: Array<Element> | NodeListOf<Element>) => void;
-
 export function useFromToggleWithActive(classname: string) {
 	const fn = inject<subscribeFrom>("subscribeFrom");
 	if (fn) {
