@@ -6,7 +6,9 @@ import homecontact from '../locale/zhTW/homecontact.json';
 import homecore from '../locale/zhTW/homecore.json';
 import homeheader from '../locale/zhTW/homeheader.json';
 import homeservice from '../locale/zhTW/homeservice.json';
+import intro from '../locale/zhTW/intro.json';
 import nav from '../locale/zhTW/nav.json';
+import notfound from '../locale/zhTW/notfound.json';
 import product from '../locale/zhTW/product.json';
 
 const resources = {
@@ -18,7 +20,9 @@ const resources = {
   homecore,
   homeheader,
   homeservice,
+  intro,
   nav,
+  notfound,
   product
 } as const;
 

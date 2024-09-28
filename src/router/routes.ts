@@ -7,6 +7,7 @@ import HomeView from "@/views/home/HomeView.vue";
 import AboutView from "@/views/AboutView.vue";
 import ProductView from "@/views/ProductView.vue";
 import ContactUsView from "@/views/ContactUsView.vue";
+import NotFoundView from "@/views/NotFoundView.vue";
 
 export const routes: RouteRecordRaw[] = [
 	{
@@ -46,7 +47,6 @@ export const routes: RouteRecordRaw[] = [
 		meta: { title: "KNOWLEDGE", subtitle: "產業知識" },
 		components: {
 			header: GlobalHeader,
-			// default: ,
 			footer: GlobalFooter,
 		},
 	},
@@ -56,7 +56,6 @@ export const routes: RouteRecordRaw[] = [
 		meta: { title: "DOWNLOAD", subtitle: "檔案下載" },
 		components: {
 			header: GlobalHeader,
-			// default: ,
 			footer: GlobalFooter,
 		},
 	},
@@ -66,7 +65,6 @@ export const routes: RouteRecordRaw[] = [
 		meta: { title: "LATEST", subtitle: "最新消息" },
 		components: {
 			header: GlobalHeader,
-			// default: ,
 			footer: GlobalFooter,
 		},
 	},
@@ -84,6 +82,8 @@ export const routes: RouteRecordRaw[] = [
 		name: "notfound",
 		path: "/:exclude(.*)*",
 		components: {
+			header: GlobalHeader,
+			default: NotFoundView,
 			footer: GlobalFooter,
 		},
 	},
