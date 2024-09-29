@@ -31,6 +31,11 @@
 		transform: translateY(0);
 		transition: 0.7s 1.5s ease-in-out;
 
+		@media (max-width: 465px) {
+			flex-flow: column;
+			align-items: center;
+		}
+
 		&.from {
 			opacity: 0;
 			transform: translateY(-10px);

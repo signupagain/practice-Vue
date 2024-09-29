@@ -91,7 +91,6 @@
 		width: clamp(300px, 50%, 540px);
 		max-height: 80%;
 		border: none;
-		overflow: hidden;
 		text-align: center;
 		&::backdrop {
 			backdrop-filter: blur(10px);
