@@ -12,7 +12,7 @@
 					href="/"
 					class="jy-nav-m-a"
 					:class="{ active: $route.meta.subtitle === label }"
-					@click.prevent="router.push({ name, params: { page: page ?? '' } })"
+					@click.prevent="$router.push({ name, params: { page: page ?? '' } })"
 					v-text="label"
 				></a>
 				<div class="jy-nav-m__line"></div>
@@ -26,7 +26,7 @@
 							href="/"
 							class="jy-nav-m-li-a"
 							@click.prevent="
-								router.push({
+								$router.push({
 									name,
 									params: { page: page ? page : '' },
 								})
@@ -51,11 +51,9 @@
 	import { ref, type ComponentPublicInstance } from "vue";
 	import NavigationDialog from "./NavigationDialog.vue";
 	import { useToggleActive } from "@/use/useToggleActive";
-	import { useRouter } from "vue-router";
 	import { useTranslation } from "i18next-vue";
 
 	const { t } = useTranslation("nav");
-	const router = useRouter();
 	const navBtn = ref(null);
 	const navBtnWrap = ref(null);
 	const navBtnControl = ref<ComponentPublicInstance | null>(null);

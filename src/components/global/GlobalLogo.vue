@@ -4,7 +4,7 @@
 		class="jy-logo"
 		:class="{ active: isH1 }"
 		:title="t('company')"
-		@click.prevent="router.push({ name: 'home' })"
+		@click.prevent="$router.push({ name: 'home' })"
 	>
 		<img
 			class="jy-logo-img"
@@ -21,7 +21,6 @@
 	</a>
 </template>
 <script setup lang="ts">
-	import { useRouter } from "vue-router";
 	import { useTranslation } from "i18next-vue";
 
 	withDefaults(
@@ -34,7 +33,6 @@
 			isOnHome: false,
 		}
 	);
-	const router = useRouter();
 	const { t } = useTranslation("common");
 </script>
 <style lang="scss">

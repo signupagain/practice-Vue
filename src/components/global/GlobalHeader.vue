@@ -16,7 +16,7 @@
 						class="jy-header-a"
 						:class="{ disabled: !name }"
 						v-text="title"
-						@click.prevent="name ? router.push({ name }) : null"
+						@click.prevent="name ? $router.push({ name }) : null"
 					></a>
 				</li>
 			</ol>
@@ -31,13 +31,12 @@
 
 <script setup lang="ts">
 	import { useTranslation } from "i18next-vue";
-	import { useRoute, useRouter } from "vue-router";
+	import { useRoute } from "vue-router";
 	import GlobalNavigation from "@/components/global/GlobalNavigation/index.vue";
 	import { computed } from "vue";
 
 	const { t } = useTranslation("common");
 	const route = useRoute();
-	const router = useRouter();
 	const curTitle = computed(() => route.meta.title ?? t("company"));
 	const curSubtitle = computed(
 		() => route.meta.subtitle ?? t("copyright.personal")

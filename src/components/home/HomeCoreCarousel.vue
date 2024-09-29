@@ -7,7 +7,7 @@
 			<a
 				href="/"
 				class="jy-pc-a"
-				@click.prevent="router.push({ name: 'about', params: { page } })"
+				@click.prevent="$router.push({ name: 'about', params: { page } })"
 			>
 				<hgroup class="jy-pc-hgroup">
 					<h3 class="jy-pc-title" v-text="title"></h3>
@@ -38,12 +38,10 @@
 	import { Autoplay, Navigation } from "swiper/modules";
 	import type { Swiper, SwiperOptions } from "swiper/types";
 	import { onMounted, ref } from "vue";
-	import { useRouter } from "vue-router";
 
 	const { t: $t } = useTranslation("common");
 	const { t } = useTranslation("homecore");
 	const figures = t("list", { returnObjects: true });
-	const router = useRouter();
 	const imgul = ref<SwiperContainer | null>(null);
 	const txtul = ref<SwiperContainer | null>(null);
 	const txtulOption: SwiperOptions = {

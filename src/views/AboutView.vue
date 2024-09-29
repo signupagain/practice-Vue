@@ -29,7 +29,7 @@
 						@click.prevent="
 							index === 0 && isScreenInMaxWidth
 								? (isUlActive = true)
-								: router.push({ name: 'about', params: { page } })
+								: $router.push({ name: 'about', params: { page } })
 						"
 					></a>
 				</li>
@@ -43,12 +43,11 @@
 	import { useMaxWidth } from "@/use/useMaxWidth";
 	import { useTranslation } from "i18next-vue";
 	import { computed, ref, watch } from "vue";
-	import { onBeforeRouteUpdate, useRouter } from "vue-router";
+	import { onBeforeRouteUpdate } from "vue-router";
 
 	const { page: curPage } = defineProps<{
 		page: string;
 	}>();
-	const router = useRouter();
 	const { t } = useTranslation("about");
 	const contents = t("contents", { returnObjects: true });
 	const options = computed(() =>

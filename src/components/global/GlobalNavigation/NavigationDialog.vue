@@ -12,7 +12,9 @@
 						href="/"
 						class="jy-nav-d-a"
 						:class="{ active: $route.meta.subtitle === label }"
-						@click.prevent="router.push({ name, params: { page: page ?? '' } })"
+						@click.prevent="
+							$router.push({ name, params: { page: page ?? '' } })
+						"
 						v-text="label"
 					></a>
 				</li>
@@ -25,13 +27,11 @@
 </template>
 <script setup lang="ts">
 	import { useTranslation } from "i18next-vue";
-	import { useRouter } from "vue-router";
 	import GlobalCopyright from "../GlobalCopyright.vue";
 	import GlobalFollow from "../GlobalFollow.vue";
 	import { useFromToggleWithActive } from "@/use/useFromToggleWithActive";
 
 	const { t } = useTranslation("nav");
-	const router = useRouter();
 	const fn = useFromToggleWithActive("jy-nav-d");
 </script>
 <style lang="scss">

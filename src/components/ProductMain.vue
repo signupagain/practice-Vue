@@ -4,7 +4,7 @@
 			<a
 				href="/"
 				class="jy-pvm-a"
-				@click="router.push({ name: 'detail', params: { page } })"
+				@click="$router.push({ name: 'detail', params: { page } })"
 			>
 				<GlobalCard class="jy-card" :title />
 			</a>
@@ -61,11 +61,9 @@
 <script setup lang="ts">
 	import { useTranslation } from "i18next-vue";
 	import { computed, reactive, ref, watch } from "vue";
-	import { useRouter } from "vue-router";
 	import GlobalCard from "./global/GlobalCard.vue";
 
 	const { curPage } = defineProps<{ curPage: string }>();
-	const router = useRouter();
 	const { t } = useTranslation("product");
 	const menuitem = t("menuitem", { returnObjects: true });
 

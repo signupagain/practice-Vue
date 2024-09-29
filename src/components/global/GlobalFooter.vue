@@ -13,7 +13,7 @@
 					<a
 						href="/"
 						class="jy-footer-a"
-						@click.prevent="router.push({ name, params: { page } })"
+						@click.prevent="$router.push({ name, params: { page } })"
 						v-text="label"
 					></a>
 				</li>
@@ -29,11 +29,9 @@
 	import GlobalFollow from "./GlobalFollow.vue";
 	import GlobalInfo from "./GlobalInfo.vue";
 	import GlobalLogo from "./GlobalLogo.vue";
-	import { useRouter } from "vue-router";
 	import { useProvideSubscribeFrom } from "@/use/useProvideSubscribeFrom";
 
 	const { t } = useTranslation("nav");
-	const router = useRouter();
 	useProvideSubscribeFrom();
 </script>
 <style lang="scss">

@@ -40,7 +40,7 @@
 							@click.prevent="
 								isScreenInMaxWidth && index === 0
 									? (isOpen = !isOpen)
-									: router.push({
+									: $router.push({
 											name: 'product',
 											params: { page: page ?? '' },
 									  })
@@ -61,10 +61,9 @@
 	import { useMaxWidth } from "@/use/useMaxWidth";
 	import { useTranslation } from "i18next-vue";
 	import { computed, ref } from "vue";
-	import { onBeforeRouteUpdate, useRouter } from "vue-router";
+	import { onBeforeRouteUpdate } from "vue-router";
 
 	const { page: curPage } = defineProps<{ page: string }>();
-	const router = useRouter();
 	const { t } = useTranslation("product");
 	const menuitem = t("menuitem", { returnObjects: true });
 	const isScreenInMaxWidth = useMaxWidth();

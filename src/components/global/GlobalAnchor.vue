@@ -4,7 +4,7 @@
 		class="jy-a"
 		:class="$attrs.class"
 		href="/"
-		@click.prevent="router.push({ name, params: { page } })"
+		@click.prevent="$router.push({ name, params: { page } })"
 	>
 		<div class="jy-a-border">
 			<div class="jy-a-text" v-text="t('button.anchor')"></div>
@@ -18,14 +18,12 @@
 </template>
 <script setup lang="ts">
 	import { useTranslation } from "i18next-vue";
-	import { useRouter } from "vue-router";
 
 	defineProps<{
 		name?: string;
 		page?: string;
 		text?: string;
 	}>();
-	const router = useRouter();
 	const { t } = useTranslation("common");
 </script>
 <style lang="scss">
