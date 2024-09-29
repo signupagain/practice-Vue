@@ -16,6 +16,15 @@
 </script>
 <style lang="scss">
 	.jy-nav {
+		margin-left: 20px;
+		padding-left: 30px;
+		border-bottom-left-radius: $radius;
+		background: $c-fff;
+		box-shadow: 0 0 15px $c-0001a;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
 		&__wrap {
 			position: fixed;
 			inset: 0 0 auto;
@@ -24,16 +33,6 @@
 			max-width: $viewMaxWidth;
 			user-select: none;
 		}
-
-		margin-left: 20px;
-		padding-left: 30px;
-		border-bottom-left-radius: $radius;
-		background: $c-fff;
-		box-shadow: 0 0 15px $c-0001a;
-
-		display: flex;
-		justify-content: space-between;
-		align-items: center;
 
 		@media (max-width: 1180px) {
 			margin-left: initial;

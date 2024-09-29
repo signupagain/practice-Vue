@@ -126,16 +126,15 @@
 		}
 
 		&-hgroup {
+			display: flex;
+			flex-flow: column;
+			align-items: center;
+			gap: 10px;
 			flex-basis: 720px;
 
 			@media (max-width: 640px) {
 				flex-basis: 470px;
 			}
-
-			display: flex;
-			flex-flow: column;
-			align-items: center;
-			gap: 10px;
 
 			&::after {
 				content: "";
@@ -202,12 +201,11 @@
 			border: none;
 			border-radius: 50%;
 			margin-top: 340px;
+			display: grid;
 
 			@media (max-width: 640px) {
 				margin-top: 215px;
 			}
-
-			display: grid;
 
 			&__prev {
 				left: 2.5%;

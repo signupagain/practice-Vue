@@ -131,13 +131,6 @@
 		}
 
 		&-btn {
-			&__wrap {
-				display: none;
-				@media (max-width: 1180px) {
-					display: block;
-				}
-			}
-
 			display: block;
 			position: relative;
 			width: $mbNavHeight;
@@ -145,6 +138,13 @@
 			padding: 19.5px;
 			border: none;
 			background-color: $c-4f6;
+
+			&__wrap {
+				display: none;
+				@media (max-width: 1180px) {
+					display: block;
+				}
+			}
 
 			&.active {
 				.jy-nav-i__top {
