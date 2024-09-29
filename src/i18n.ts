@@ -5,7 +5,7 @@ import type { App } from "vue";
 import I18NextVue from "i18next-vue";
 
 const i18nOption: InitOptions = {
-	debug: true,
+	debug: import.meta.env.MODE === "development",
 	lng: import.meta.env.VITE_DEFAULT_LOCALE ?? "zh-Hant-TW",
 	fallbackLng: "zh-Hant-TW",
 	defaultNS: "common",
