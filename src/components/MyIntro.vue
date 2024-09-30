@@ -6,7 +6,7 @@
 			<ul class="declare-ul">
 				<li class="declare-li" v-for="{ word, company, link: href } of links">
 					<span class="declare-span" v-text="word"></span
-					><a :href class="declare-a" v-text="company"></a>
+					><a :href target="_blank" class="declare-a" v-text="company"></a>
 				</li>
 			</ul>
 		</article>
@@ -17,6 +17,12 @@
 					><img :src :alt class="skill-img"
 				/></swiper-slide>
 			</swiper-container>
+			<a
+				class="skill-p"
+				href="https://github.com/signupagain/practice-vue"
+				target="_blank"
+				v-text="t('skill.github')"
+			></a>
 		</section>
 		<button
 			type="button"
