@@ -140,13 +140,14 @@
 
 		&-list {
 			height: 55px;
-			position: absolute;
-			inset: auto 0;
-			z-index: 1;
-			overflow: hidden;
-			box-shadow: 0 5px 15px $c-0001a;
 
 			@media (max-width: 1180px) {
+				position: absolute;
+				inset: auto 0;
+				z-index: 1;
+				overflow: hidden;
+				box-shadow: 0 5px 15px $c-0001a;
+
 				&__wrap {
 					height: 55px;
 					position: relative;
