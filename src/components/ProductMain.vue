@@ -1,11 +1,7 @@
 <template>
 	<ul class="jy-pvm-ul">
 		<li class="jy-pvm-li" v-for="{ title, page } of curProducts">
-			<a
-				href="/"
-				class="jy-pvm-a"
-				@click="$router.push({ name: 'detail', params: { page } })"
-			>
+			<a href="/" class="jy-pvm-a" @click.prevent>
 				<GlobalCard class="jy-card" :title />
 			</a>
 		</li>
