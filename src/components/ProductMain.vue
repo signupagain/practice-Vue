@@ -1,6 +1,6 @@
 <template>
 	<ul class="jy-pvm-ul">
-		<li class="jy-pvm-li" v-for="{ title, page } of curProducts">
+		<li class="jy-pvm-li" v-for="{ title } of curProducts">
 			<a href="/" class="jy-pvm-a" @click.prevent>
 				<GlobalCard class="jy-card" :title />
 			</a>
