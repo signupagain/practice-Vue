@@ -22,6 +22,10 @@
 		&-dl {
 			display: grid;
 			grid: auto-flow / auto auto;
+
+			@media (max-width: 400px) {
+				grid: auto-flow / auto;
+			}
 		}
 
 		&-dt {

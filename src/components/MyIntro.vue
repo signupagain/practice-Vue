@@ -111,10 +111,12 @@
 		}
 
 		&-close {
-			width: 30px;
+			width: 50px;
+			height: 50px;
 			right: 5%;
 			top: 5%;
 			color: $c-fff;
+			background-color: $c-000;
 		}
 
 		&-open {
