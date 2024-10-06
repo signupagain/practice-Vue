@@ -22,6 +22,7 @@ export default defineConfig({
 		preprocessorOptions: {
 			scss: {
 				additionalData: `@use "@scss/vars" as *;`,
+				api: "modern-compiler",
 			},
 		},
 		postcss: {
